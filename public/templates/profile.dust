@@ -1,0 +1,12 @@
+{>"layouts/master" /}
+
+{<body}
+  <h2>{greeting}</h2>
+  <p>Welcome <strong>{user.fullName}</strong>! You 
+    {?user.isAdmin}
+      <strong>are</strong>
+    {:else}
+      <strong>are not</strong>
+    {/user.isAdmin} an Admin user.</p>
+    <p>Your email address: {user.email}</p>
+{/body}

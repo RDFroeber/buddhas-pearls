@@ -1,0 +1,6 @@
+{>"layouts/master" /}
+
+{<body}
+  <h2>Service Unavailable</h2>
+  <p>The service is unavailable. Please try back shortly.</p>
+{/body}

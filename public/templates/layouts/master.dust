@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" class="nm-np">
+<head>
+  <meta charset="utf-8"/>
+  <title>{+title /}</title>
+  <link rel="stylesheet" href="/css/style.css"/>
+</head>
+
+<body>
+<header>
+  <h1>Divorante</h1>
+  <nav>
+    <ul>
+      <li><a href="/">Home</a></li>
+      {#user}
+        <li><a href="/profile">Profile</a></li>
+        <li><a href="/logout">Logout</a></li>
+      {:else}
+        <li><a href="/login">Login</a></li>
+      {/user}
+    </ul>
+  </nav>
+</header>
+
+<div class="wrapper">
+  {+body /}
+</div>
+
+</body>
+</html>

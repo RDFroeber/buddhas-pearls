@@ -1,0 +1,6 @@
+{>"layouts/master" /}
+
+{<body}
+  <h2>Unauthorized</h2>
+  <p>Sorry, you are not authorized to view the <code>{url}</code> page.</p>
+{/body}
