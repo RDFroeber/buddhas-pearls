@@ -20,7 +20,7 @@ var app = express();
  * Configuration
  **/
 
-// app.use(favicon(__dirname + '/public/favicon.ico'));
+app.use(favicon(__dirname + '/public/img/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -31,6 +31,7 @@ app.use(express.static(path.join(__dirname, 'public')));
  * View Engine
  **/
 
+dustjs.helper = require('dustjs-helpers');
 app.engine('dust', dustjs.dust({ cache: false }));
 app.engine('js', dustjs.js({ cache: false }));
 app.set('views', __dirname + '/public/templates');
@@ -75,7 +76,8 @@ app.use(flash());
 
 app.use('/', require('./routes'));
 app.use('/', require('./routes/login'));
-app.use('/users', require('./routes/users'));
+app.use('/admin', require('./routes/admin'));
+app.use('/account', require('./routes/users'));
 app.use('/mail', require('./routes/mail'));
 
 /**
