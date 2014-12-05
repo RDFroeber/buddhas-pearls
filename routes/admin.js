@@ -30,4 +30,9 @@ adminRouter.route('/')
     return res.render('admin');
   });
 
+adminRouter.route('/inventory')
+  .get(function(req, res, next) {
+    return res.render('store');
+  });
+
 module.exports = adminRouter;

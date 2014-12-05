@@ -1,5 +1,5 @@
 /**
- * Mailgun Example
+ * Buddhas & Pearls
  **/
 
 var express = require('express'),
