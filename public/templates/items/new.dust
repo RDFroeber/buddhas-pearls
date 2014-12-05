@@ -1,0 +1,29 @@
+{>"layouts/master" /}
+
+{<body}
+  <h2>Inventory</h2>
+
+  <div>
+    <h3>Add Item</h3>
+    <form action="/inventory" method="POST">
+      <label for="name">
+        <input type="text" name="name" placeholder="Item name" />
+      </label>
+
+      <label for="price">
+        $ <input type="number" min="0.00" step="0.01" name="price" placeholder="Price" />
+      </label>
+
+      <label for="inStock">
+        <input type="number" name="inStock" placeholder="Quantity available" value="1" />
+      </label>
+
+      <label for="description">
+        <textarea name="description"></textarea>
+      </label>
+
+      <input type="submit" value="Create"/>
+      <input type="hidden" name="_csrf" value="{_csrf}"/>
+    </form>
+  </div>
+{/body}

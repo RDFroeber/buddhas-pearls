@@ -1,0 +1,24 @@
+{>"layouts/master" /}
+
+{<body}
+  <h2>Inventory</h2>
+
+  <div>
+    <h3>All Items</h3>
+    {?items}
+      {#items}
+        <p>
+          <img src="{item.imageUrl}" alt="Image of {item.name}">
+          <strong>name</strong>: {name}<br />
+          <strong>sku</strong>: {sku}<br />
+          <strong>price</strong>: ${price}<br />
+          <strong>in stock</strong>: {inStock}<br />
+          <strong>description</strong>: {description}<br />
+        </p>
+        <p><a href="/inventory/items/{item.sku}">Edit</a></p>
+      {/items}
+    {:else}
+      <p>You have no items for sale. <a href="/inventory/new">Add one!</a></p>
+    {/items}
+  </div>
+{/body}

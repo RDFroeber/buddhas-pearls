@@ -76,8 +76,10 @@ app.use(flash());
 
 app.use('/', require('./routes'));
 app.use('/', require('./routes/login'));
-app.use('/admin', require('./routes/admin'));
 app.use('/account', require('./routes/users'));
+app.use('/store', require('./routes/items'));
+app.use('/admin', require('./routes/admin'));
+app.use('/inventory', require('./routes/inventory'));
 app.use('/mail', require('./routes/mail'));
 
 /**

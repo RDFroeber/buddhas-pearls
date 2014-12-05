@@ -1,0 +1,22 @@
+{>"layouts/master" /}
+
+{<body}
+  <h2>Store</h2>
+
+  <div>
+    <h3>All Items</h3>
+    {?items}
+      {#items}
+        <p>
+          <img src="{item.imageUrl}" alt="Image of {item.name}">
+          <strong>name</strong>: {item.name}<br />
+          <strong>sku</strong>: {item.sku}<br />
+          <strong>price</strong>: ${item.price}<br />
+        </p>
+        <p><a href="/store/items/{item.sku}">Detail</a></p>
+      {/items}
+    {:else}
+      <p>Sorry there are no items for sale. Please check back later.</p>
+    {/items}
+  </div>
+{/body}

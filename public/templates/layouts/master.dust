@@ -18,10 +18,13 @@
   </div>
   <nav class="main-nav">
     <ul>
+      <li><a href="/about">About</a></li>
+      <li><a href="/store">Store</a></li>
       {#user}
         <li><a href="/dashboard">Dashboard</a></li>
         {?user.isAdmin}
           <li><a href="/admin">Admin</a></li>
+          <li><a href="/inventory">Inventory</a></li>
         {/user.isAdmin}
         <li><a href="/account">Account Settings</a></li>
         <li><a href="/logout">Logout</a></li>
