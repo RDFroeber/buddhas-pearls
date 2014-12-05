@@ -1,6 +1,10 @@
 body {
-  padding: 50px;
+  padding: 20px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+div.wrapper {
+  margin: 30px 0 0;
 }
 
 a {
@@ -10,4 +14,37 @@ a {
 
 form {
   width: 25%;
+}
+
+div.logo {
+  text-align: center;
+}
+
+div.logo img {
+  margin: -15px 10px 20px;
+  max-width: 152px;
+  width: 50px; 
+}
+
+nav.main-nav {
+  width: 100%;
+}
+
+nav.main-nav ul {
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+nav.main-nav ul li {
+  display: inline-block;
+  padding: 0 10px;
+  border-bottom: 1px solid #FFF;
+}
+
+nav.main-nav ul li a {
+  display: inline-block;
+  margin: 0 10px;
+  padding: 0 0 10px;
+  border-bottom: 1px solid #00B7FF;
 }
