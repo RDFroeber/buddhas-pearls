@@ -5,28 +5,33 @@
 var express = require('express'),
     userRouter = express.Router(),
     User = require('../models').User;
- 
-userRouter.param('userId', function(req, res, next, id) {
-  User.findById(req.params.userId).exec(function(err, user) {
-    req.user = user;
+
+userRouter.use(function(req, res, next) {
+  if(req.user){
     return next();
-  });
+  } else {
+    return res.redirect('/login');
+  }
 });
 
-userRouter.route('/:userId')
+userRouter.route('/edit')
   .get(function(req, res, next) {
-    return res.json(req.user || {});
+    var statesArray = ['AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FL', 'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY'];
+    return res.render('users/edit', {user: req.user, states: statesArray});
+  })
+
+userRouter.route('/')
+  .get(function(req, res, next) {
+    return res.render('users/view', req.user);
   })
   .post(function(req, res, next) {
-    var user = new User(req.body);
-    user.save(function(err, user) {
-      return res.json(user);
-    });
-  })
-  .put(function(req, res, next) {
-    req.user.set(req.body);
+    delete req.body._csrf;
+    var userObj = req.body;
+    userObj.updatedAt = Date.now();
+
+    req.user.set(userObj);
     req.user.save(function(err, user) {
-      return res.json(user);
+      return res.redirect('/account');
     });
   })
   .delete(function(req, res, next) {

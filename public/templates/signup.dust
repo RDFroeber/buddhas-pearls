@@ -10,7 +10,7 @@
       <table>
         <tr>
           <td><label for="email">Email:</label></td>
-          <td><input id="email" name="email" type="text"/></td>
+          <td><input id="email" name="email" type="email"/></td>
         </tr>
         <tr>
           <td><label for="password">Password:</label></td>

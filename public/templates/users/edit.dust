@@ -1,0 +1,93 @@
+{>"layouts/master" /}
+
+{<body}
+  <h2>Edit User Account</h2>
+  <div>
+    <h3>User Account</h3>
+
+    <form action="/profile" method="POST">
+      {#user}
+      <label for="firstName">
+        <input type="text" name="firstName" placeholder="First name" value="{firstName}" />
+      </label>
+
+      <label for="lastName">
+        <input type="text" name="lastName" placeholder="Last name" value="{lastName}" />
+      </label>
+
+      <label for="email">
+        <input type="email" name="local.email" placeholder="yourname@domain.com" value="{local.email}" />
+      </label>
+
+      <p>Address</p>
+      <label for="street">
+        <input type="text" name="address.street" value="{address.street}" />
+      </label>
+
+      <label for="city">
+        <input type="text" name="address.city" value="{address.city}" />
+      </label>
+
+      <select name="address.state">
+        {#states}
+          <option value="{.}" {@eq key="{address.state}" value="{.}"}selected{/eq}>{.}</option>
+        {/states}
+      </select>
+
+      <label for="zipcode">
+        <input type="text" name="address.zipcode" value="{address.zipcode}" maxlength="5" />
+      </label>
+
+      {/user}
+      <input type="submit" value="Update"/>
+      <input type="hidden" name="_csrf" value="{_csrf}"/>
+    </form>
+  </div>
+
+  <div>
+    <h3>Google+ Account</h3>
+    {?user.google.token}
+      <p>
+        <strong>id</strong>: {user.google.id}<br />
+        <strong>name</strong>: {user.google.name}<br />
+        <strong>email</strong>: {user.google.email}<br />
+        <strong>token</strong>: {user.google.token}<br />
+      </p>
+      <p><a href="/unlink/google">Unlink Account</a></p>
+    {:else}
+      <p><a href="/connect/google">Connect Google</a></p>
+    {/user.google.token}
+  </div>
+
+  <div>
+    <h3>Facebook Account</h3>
+    {?user.facebook.token}
+      <p>
+        <strong>id</strong>: {user.facebook.id}<br />
+        <strong>name</strong>: {user.facebook.name}<br />
+        <strong>email</strong>: {user.facebook.email}<br />
+        <strong>token</strong>: {user.facebook.token}<br />
+      </p>
+      <p><a href="/unlink/facebook">Unlink Account</a></p>
+    {:else}
+      <p><a href="/connect/facebook">Connect Facebook</a></p>
+    {/user.facebook.token}
+  </div>
+
+  <div>
+    <h3>Twitter Account</h3>
+    {?user.twitter.token}
+      <p>
+        <strong>id</strong>: {user.twitter.id}<br />
+        <strong>display name</strong>: {user.twitter.displayName}<br />
+        <strong>username</strong>: {user.twitter.username}<br />
+        <strong>token</strong>: {user.twitter.token}<br />
+      </p>
+      <p><a href="/unlink/twitter">Unlink Account</a></p>
+    {:else}
+      <p><a href="/connect/twitter">Connect Twitter</a></p>
+    {/user.twitter.token}
+  </div>
+
+  
+{/body}

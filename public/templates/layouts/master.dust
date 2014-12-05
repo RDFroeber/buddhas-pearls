@@ -8,12 +8,23 @@
 
 <body>
 <header>
-  <h1>Divorante</h1>
-  <nav>
+  <div class="logo">
+    <h1>Divorante</h1>
+    {?home}
+    <img src="/img/lattice.png" alt="Divorante Logo">
+    {:else}
+    <a href="/"><img src="/img/lattice.png" alt="Divorante Logo"></a>
+    {/home}
+  </div>
+  <nav class="main-nav">
     <ul>
-      <li><a href="/">Home</a></li>
       {#user}
-        <li><a href="/profile">Profile</a></li>
+        <li><a href="/dashboard">Dashboard</a></li>
+        {?user.isAdmin}
+          <li><a href="/admin">Admin</a></li>
+        {:else}
+          <li><a href="/account">Account Settings</a></li>
+        {/user.isAdmin}
         <li><a href="/logout">Logout</a></li>
       {:else}
         <li><a href="/login">Login</a></li>

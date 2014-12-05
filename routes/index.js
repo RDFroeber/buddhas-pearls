@@ -7,7 +7,7 @@ var express = require('express'),
 
 homeRouter.route('/')
   .get(function(req, res, next) {
-    return res.render('index', {greeting: 'Welcome to My Site!'});
+    return res.render('index', {home: true, greeting: 'Welcome to My Site!'});
   });
  
 module.exports = homeRouter;

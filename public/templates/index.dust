@@ -6,11 +6,6 @@
   <p>Sign up:</p>
   <p><a href="/signup">Create Account</a></p>
 
-  <p>Login with Google, Facebook or Twitter:</p>
-  <p><a href="/auth/google">Google+</a></p>
-  <p><a href="/auth/facebook">Facebook</a></p>
-  <!-- <p><a href="/auth/twitter">Twitter</a></p> -->
-
   <form id="mgform">
     <fieldset>
       <p>Mailgun Form</p>
