@@ -12,7 +12,8 @@ var express = require('express'),
     passport = require('passport'),
     flash = require('connect-flash'),
     lusca = require('lusca'),
-    dustjs = require('adaro');
+    dustjs = require('adaro'),
+    multer = require('multer');
 
 var app = express();
 
@@ -22,6 +23,7 @@ var app = express();
 
 app.use(favicon(__dirname + '/public/img/favicon.ico'));
 app.use(logger('dev'));
+app.use(multer({ inMemory: true}))
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -80,6 +82,8 @@ app.use('/account', require('./routes/users'));
 app.use('/store', require('./routes/items'));
 app.use('/admin', require('./routes/admin'));
 app.use('/inventory', require('./routes/inventory'));
+app.use('/inventory', require('./routes/categories'));
+
 app.use('/mail', require('./routes/mail'));
 
 /**

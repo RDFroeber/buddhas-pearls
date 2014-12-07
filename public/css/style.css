@@ -58,3 +58,10 @@ nav.main-nav ul li {
   border-bottom: 1px solid #FFF;
   text-transform: uppercase;
 }
+
+img.productImg {
+  display: block;
+  max-width: 100px;
+}
+
+

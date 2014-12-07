@@ -4,8 +4,8 @@
 
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
-    bcrypt = require('bcrypt'),
-    moment = require('moment');
+    moment = require('moment'),
+    Category = require('./Category');
 
 var itemSchema = new Schema({
   name        : {
@@ -13,9 +13,15 @@ var itemSchema = new Schema({
     require   : true,
     trim      : true
   },
+  category: { 
+    type      : Schema.Types.ObjectId, 
+    required  : true,
+    ref       : 'Category' 
+  },
   sku         : {
     type      : String, 
-    // require   : true
+    unique    : true,
+    require   : true
   },
   imageUrl    : {
     type      : String, 
@@ -72,5 +78,75 @@ itemSchema.virtual('updated').get(function(){
 
 itemSchema.set('toObject', { virtuals: true });
 
+/**
+* Private Methods
+**/
+
+function generateSku(category) {
+  var name = category.name,
+      counter = category.counter,
+      sku = '';
+
+  switch(name.toLowerCase()) {
+    case 'necklace':
+      sku = 'NL';
+      break;
+    case 'earrings':
+      sku = 'EA';
+      break;
+    case 'bracelet':
+      sku = 'BR';
+      break;
+    case 'set':
+      sku = 'SE';
+      break;
+    case 'jewelry':
+      sku = 'JE';
+      break;
+    default:
+      sku = 'UN';
+  }
+
+  switch(counter.toString().length) {
+    case 1:
+      sku = sku + '-000' + counter.toString();
+      break;
+    case 2:
+      sku = sku + '-00' + counter.toString();
+      break;
+    case 3:
+      sku = sku + '-00' + counter.toString();
+      break;
+    case 4:
+      sku = sku + '-0' + counter.toString();
+      break;
+     default:
+      sku = sku + '-' + counter.toString();
+  }
+
+  return sku;
+    
+};
+
+/**
+* Pre-Save
+**/
+
+itemSchema.pre('save', function(next) {
+    var self = this;
+    Category.findById(self.category).exec(function(err, category){
+      if(err) {
+        console.log(err);
+      }
+      self.sku = generateSku(category);
+      category.counter += 1;
+      category.save(function(err, updatedCategory){
+        if(err){
+          console.log(err);
+        }
+        next();
+      })
+    });
+});
 
 module.exports = mongoose.model('Item', itemSchema);

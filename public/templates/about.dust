@@ -1,0 +1,7 @@
+{>"layouts/master" /}
+
+{<body}
+  <h2>About Us</h2>
+
+  <p>We're cool :-)</p>
+{/body}

@@ -10,4 +10,9 @@ homeRouter.route('/')
     return res.render('index', {home: true, greeting: 'Welcome to My Site!'});
   });
  
+homeRouter.route('/about')
+  .get(function(req, res, next) {
+    return res.render('about', {});
+  });
+
 module.exports = homeRouter;

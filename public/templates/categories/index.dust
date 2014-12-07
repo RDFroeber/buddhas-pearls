@@ -1,0 +1,29 @@
+{>"layouts/master" /}
+
+{<body}
+  <h2>Inventory</h2>
+
+  <div>
+    <h3>Categories</h3>
+    {?categories}
+      {#categories}
+        <p>
+          <strong>name</strong>: {name}<br />
+          <strong>parent</strong>: 
+          {?parent}
+            {parent.name}
+          {:else}
+            none
+          {/parent}
+        </p>
+        {?description}
+          <p>{description}</p>
+        {/description}
+        <!-- <p><a href="/inventory/items/{item.sku}">Edit</a></p> -->
+      {/categories}
+    {:else}
+      <p>You do not have and categories. <a href="/inventory/categories/new">Add one!</a></p>
+    {/categories}
+    <p><a href="/inventory/categories/new">Add a Category</a></p>
+  </div>
+{/body}

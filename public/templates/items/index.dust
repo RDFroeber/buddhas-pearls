@@ -8,12 +8,12 @@
     {?items}
       {#items}
         <p>
-          <img src="{item.imageUrl}" alt="Image of {item.name}">
-          <strong>name</strong>: {item.name}<br />
-          <strong>sku</strong>: {item.sku}<br />
-          <strong>price</strong>: ${item.price}<br />
+          <img src="{imageUrl}" alt="Image of {name}" class="productImg">
+          <strong>name</strong>: {name}<br />
+          <strong>sku</strong>: {sku}<br />
+          <strong>price</strong>: ${price}<br />
         </p>
-        <p><a href="/store/items/{item.sku}">Detail</a></p>
+        <p><a href="/store/items/{sku}">Detail</a></p>
       {/items}
     {:else}
       <p>Sorry there are no items for sale. Please check back later.</p>

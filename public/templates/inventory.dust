@@ -8,17 +8,19 @@
     {?items}
       {#items}
         <p>
-          <img src="{item.imageUrl}" alt="Image of {item.name}">
+          <img src="{imageUrl}" alt="Image of {name}" class="productImg">
           <strong>name</strong>: {name}<br />
           <strong>sku</strong>: {sku}<br />
           <strong>price</strong>: ${price}<br />
           <strong>in stock</strong>: {inStock}<br />
           <strong>description</strong>: {description}<br />
         </p>
-        <p><a href="/inventory/items/{item.sku}">Edit</a></p>
+        <p><a href="/inventory/items/{sku}">Edit</a></p>
       {/items}
     {:else}
       <p>You have no items for sale. <a href="/inventory/new">Add one!</a></p>
     {/items}
   </div>
+  <p><a href="/inventory/new">Add an Item</a></p></p>
+  <p><a href="/inventory/categories">View Categories</a></p>
 {/body}
