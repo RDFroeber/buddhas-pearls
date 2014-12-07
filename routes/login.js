@@ -14,17 +14,7 @@ var express = require('express'),
 loginRouter.use(function(req, res, next) {
   res.app.locals.user = req.user;
   // console.log("Trying to: " + req.method, req.url);
-
-  if(req.url === '/dashboard'){
-    // TODO: Implement Logged in Policy
-    if(req.user){
-      return next();
-    } else {
-      return res.redirect('/login');
-    }
-  } else {
-    return next(); 
-  }
+  return next();
 });
 
 /**
@@ -36,25 +26,29 @@ loginRouter.route('/signup')
     return res.render('signup', {message: req.flash('error')[0]});
   })
   .post(passport.authenticate('localSignup', {
-      successRedirect : '/dashboard',
       failureRedirect : '/signup',
       failureFlash: true
-    }));
+    }), function(req, res){
+      if(req.user.isAdmin){
+        return res.redirect('/admin');
+      } else {
+        return res.redirect('/account');
+      } 
+  });
 
 loginRouter.route('/login')
   .get(function(req, res, next) {
     return res.render('login', {message: req.flash('error')[0]});
   })
   .post(passport.authenticate('localLogin', {
-      successRedirect : '/dashboard',
       failureRedirect : '/login',
       failureFlash: true
-    }));
-
-loginRouter.route('/dashboard')
-  .get(function(req, res, next) {
-    var user = req.user;
-    return res.render('dashboard', user);
+    }), function(req, res){
+      if(req.user.isAdmin){
+        return res.redirect('/admin');
+      } else {
+        return res.redirect('/account');
+      } 
   });
 
 loginRouter.route('/logout')
@@ -72,10 +66,15 @@ loginRouter.route('/auth/google')
 
 loginRouter.route('/auth/google/callback')
   .get(passport.authenticate('google', {
-      successRedirect : '/dashboard',
       failureRedirect : '/',
       failureFlash: true
-    }));
+    }), function(req, res){
+      if(req.user.isAdmin){
+        return res.redirect('/admin');
+      } else {
+        return res.redirect('/account');
+      } 
+  });
 
 /**
  * Facebook Authentication
@@ -86,9 +85,14 @@ loginRouter.route('/auth/facebook')
 
 loginRouter.route('/auth/facebook/callback')
   .get(passport.authenticate('facebook', {
-      successRedirect : '/dashboard',
       failureRedirect : '/'
-    }));
+    }), function(req, res){
+      if(req.user.isAdmin){
+        return res.redirect('/admin');
+      } else {
+        return res.redirect('/account');
+      } 
+  });
 
 /**
  * Twitter Authentication
@@ -99,9 +103,14 @@ loginRouter.route('/auth/twitter')
 
 loginRouter.route('/auth/facebook/callback')
   .get(passport.authenticate('twitter', {
-      successRedirect : '/dashboard',
       failureRedirect : '/'
-    }));
+    }), function(req, res){
+      if(req.user.isAdmin){
+        return res.redirect('/admin');
+      } else {
+        return res.redirect('/account');
+      } 
+  });
 
 /**
  * Connect Accounts
@@ -112,7 +121,7 @@ loginRouter.route('/connect/google')
 
 loginRouter.route('/connect/google/callback')
   .get(passport.authorize('google', {
-      successRedirect : '/account',
+      successRedirect : '/account/settings',
       failureRedirect : '/'
     }));
 
@@ -121,7 +130,7 @@ loginRouter.route('/connect/facebook')
 
 loginRouter.route('/connect/facebook/callback')
   .get(passport.authorize('facebook', {
-      successRedirect : '/account',
+      successRedirect : '/account/settings',
       failureRedirect : '/'
     }));
 
@@ -130,7 +139,7 @@ loginRouter.route('/connect/twitter')
 
 loginRouter.route('/connect/twitter/callback')
   .get(passport.authorize('twitter', {
-      successRedirect : '/account',
+      successRedirect : '/account/settings',
       failureRedirect : '/'
     }));
 
@@ -144,7 +153,7 @@ loginRouter.route('/unlink/google')
     user.google.token = undefined;
 
     user.save(function(err) {
-      return res.redirect('/account');
+      return res.redirect('/account/settings');
     });
   });
 
@@ -154,7 +163,7 @@ loginRouter.route('/unlink/facebook')
     user.facebook.token = undefined;
 
     user.save(function(err) {
-      return res.redirect('/account');
+      return res.redirect('/account/settings');
     });
   });
 
@@ -164,7 +173,7 @@ loginRouter.route('/unlink/twitter')
     user.twitter.token = undefined;
 
     user.save(function(err) {
-      res.redirect('/account');
+      res.redirect('/account/settings');
     });
   });
 

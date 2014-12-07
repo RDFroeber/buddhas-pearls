@@ -30,4 +30,9 @@ adminRouter.route('/')
     return res.render('admin');
   });
 
+// adminRouter.route('/users')
+//   .get(function(req, res, next) {
+//     return res.render('admin');
+//   });
+
 module.exports = adminRouter;

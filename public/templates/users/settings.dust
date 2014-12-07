@@ -10,7 +10,7 @@
         <strong>email</strong>: {user.local.email}<br />
         <strong>password</strong>: {user.local.password}<br />
       </p>
-      <p><a href="/profile/edit">Edit Account</a></p>
+      <p><a href="/account/edit">Edit Account</a></p>
   </div>
 
   <div>

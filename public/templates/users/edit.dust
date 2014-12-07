@@ -5,7 +5,7 @@
   <div>
     <h3>User Account</h3>
 
-    <form action="/profile" method="POST">
+    <form action="/account" method="POST">
       {#user}
       <label for="firstName">
         <input type="text" name="firstName" placeholder="First name" value="{firstName}" />
@@ -40,6 +40,7 @@
 
       {/user}
       <input type="submit" value="Update"/>
+      <input type="hidden" name="_method" value="PUT">
       <input type="hidden" name="_csrf" value="{_csrf}"/>
     </form>
   </div>

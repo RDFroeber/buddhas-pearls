@@ -3,7 +3,7 @@
  **/
 
 var express = require('express'),
-    inventoryRouter = express.Router(),
+    itemRouter = express.Router(),
     moment = require('moment'),
     Item = require('../models').Item,
     Category = require('../models').Category,
@@ -12,7 +12,7 @@ var express = require('express'),
 
 var s3 = new AWS.S3({accessKeyId: auth.accessKeyId, secretAccessKey: auth.secretAccessKey});
 
-inventoryRouter.use(function(req, res, next) {
+itemRouter.use(function(req, res, next) {
   if(req.user && req.user.isAdmin){
     return next();
   } else {
@@ -21,7 +21,7 @@ inventoryRouter.use(function(req, res, next) {
   }
 });
 
-inventoryRouter.route('/')
+itemRouter.route('/')
   .get(function(req, res, next) {
     Item.find().exec(function(err, items){
       if(err){
@@ -54,7 +54,7 @@ inventoryRouter.route('/')
     });
   });
 
-inventoryRouter.route('/new')
+itemRouter.route('/new')
   .get(function(req, res, next) {
     Category.find().exec(function(err, categories){
       if(err){
@@ -65,7 +65,7 @@ inventoryRouter.route('/new')
   });
 
 
-inventoryRouter.route('/edit/:itemSku')
+itemRouter.route('/edit/:itemSku')
   .get(function(req, res, next) {
     var sku = req.param('itemSku');
 
@@ -82,7 +82,7 @@ inventoryRouter.route('/edit/:itemSku')
     });
   });
 
-inventoryRouter.route('/items/:itemSku')
+itemRouter.route('/items/:itemSku')
   .get(function(req, res, next) {
     var sku = req.param('itemSku');
 
@@ -174,4 +174,4 @@ function uploadImage(s3, imageObj, category){
   return path;
 }
  
-module.exports = inventoryRouter;
+module.exports = itemRouter;
