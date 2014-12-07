@@ -134,19 +134,24 @@ function generateSku(category) {
 
 itemSchema.pre('save', function(next) {
     var self = this;
-    Category.findById(self.category).exec(function(err, category){
-      if(err) {
-        console.log(err);
-      }
-      self.sku = generateSku(category);
-      category.counter += 1;
-      category.save(function(err, updatedCategory){
-        if(err){
+
+    if(self.isModified('sku')){
+      Category.findById(self.category).exec(function(err, category){
+        if(err) {
           console.log(err);
         }
-        next();
-      })
-    });
+        self.sku = generateSku(category);
+        category.counter += 1;
+        category.save(function(err, updatedCategory){
+          if(err){
+            console.log(err);
+          }
+          return next();
+        })
+      });
+    } else {
+      return next();
+    }
 });
 
 module.exports = mongoose.model('Item', itemSchema);

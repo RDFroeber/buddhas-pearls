@@ -1,0 +1,43 @@
+{>"layouts/master" /}
+
+{<body}
+  <h2>Inventory</h2>
+
+  <div>
+    {#item}
+      <h3>Update Item</h3>
+      <form action="/inventory/items/{sku}" method="POST" enctype="multipart/form-data">
+        <label for="name">
+          <input type="text" name="name" placeholder="Item name" value="{name}"/>
+        </label>
+
+        <p>sku: {sku}</p>
+        
+        <label for="image">
+          <input type="file" name="image" accept="image/*" />
+        </label>
+
+        <select name="category">
+          {#categories}
+            <option value="{._id}" {@eq key="{name}" value="{.}"}selected{/eq}>{.name}</option>
+          {/categories}
+        </select><br />
+
+        <label for="price">
+          $ <input type="number" min="0.00" step="0.01" name="price" placeholder="Price" value="{price}" />
+        </label>
+
+        <label for="inStock">
+          <input type="number" name="inStock" placeholder="Quantity available" value="{inStock}" />
+        </label>
+
+        <label for="description">
+          <textarea name="description">{description}</textarea>
+        </label>
+
+        <input type="submit" value="Update"/>
+        <input type="hidden" name="_csrf" value="{_csrf}"/>
+      </form>
+    {/item}
+  </div>
+{/body}

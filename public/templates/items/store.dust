@@ -1,7 +1,7 @@
 {>"layouts/master" /}
 
 {<body}
-  <h2>Inventory</h2>
+  <h2>Store</h2>
 
   <div>
     <h3>All Items</h3>
@@ -12,15 +12,11 @@
           <strong>name</strong>: {name}<br />
           <strong>sku</strong>: {sku}<br />
           <strong>price</strong>: ${price}<br />
-          <strong>in stock</strong>: {inStock}<br />
-          <strong>description</strong>: {description}<br />
         </p>
-        <p><a href="/inventory/items/{sku}">Edit</a></p>
+        <p><a href="/store/items/{sku}">Detail</a></p>
       {/items}
     {:else}
-      <p>You have no items for sale. <a href="/inventory/new">Add one!</a></p>
+      <p>Sorry there are no items for sale. Please check back later.</p>
     {/items}
   </div>
-  <p><a href="/inventory/new">Add an Item</a></p></p>
-  <p><a href="/inventory/categories">View Categories</a></p>
 {/body}

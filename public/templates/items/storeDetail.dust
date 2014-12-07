@@ -1,7 +1,7 @@
 {>"layouts/master" /}
 
 {<body}
-  <h2></h2>
+  <h2>Store</h2>
 
   <div>
     {#item}
@@ -12,8 +12,7 @@
         <strong>price</strong>: ${price}<br />
       </p>
       <p>{description}</p>
-      <p><a href="/inventory/edit/{sku}">Edit Item</a></p>
-      <p><a href="/inventory/items/{sku}">Delete Item</a></p>
+      <p><a href="#">Add to Cart</a></p>
     {/item}
   </div>
 {/body}
