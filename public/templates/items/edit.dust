@@ -12,7 +12,7 @@
         </label>
 
         <p>sku: {sku}</p>
-        
+
         <label for="image">
           <input type="file" name="image" accept="image/*" />
         </label>
@@ -36,6 +36,7 @@
         </label>
 
         <input type="submit" value="Update"/>
+        <input type="hidden" name="_method" value="PUT">
         <input type="hidden" name="_csrf" value="{_csrf}"/>
       </form>
     {/item}

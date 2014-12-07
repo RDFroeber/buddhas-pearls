@@ -16,6 +16,7 @@ inventoryRouter.use(function(req, res, next) {
   if(req.user && req.user.isAdmin){
     return next();
   } else {
+    // Return to last url
     return res.redirect('/');
   }
 });
@@ -92,7 +93,7 @@ inventoryRouter.route('/items/:itemSku')
       return res.render('items/view', {user: req.user, item: item});
     });
   })
-  .post(function(req, res, next) {
+  .put(function(req, res, next) {
     var sku = req.param('itemSku'),
         itemObj = req.body,
         imageObj = req.files.image;
@@ -107,7 +108,7 @@ inventoryRouter.route('/items/:itemSku')
       if(err){
         console.log(err);
       } else {
-        
+
         if(imageObj){
           var imagePath = 'https://divorante.s3-us-west-2.amazonaws.com/' + uploadImage(s3, imageObj, category);
           itemObj.imageUrl = imagePath; 
@@ -137,8 +138,9 @@ inventoryRouter.route('/items/:itemSku')
     Item.findOne({sku: sku}).remove(function(err) {
       if(err){
         console.log(err);
+      } else {
+        return res.redirect('/inventory');
       }
-      return res.redirect('/inventory');
     });   
   });
 

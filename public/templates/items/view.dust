@@ -13,7 +13,13 @@
       </p>
       <p>{description}</p>
       <p><a href="/inventory/edit/{sku}">Edit Item</a></p>
-      <p><a href="/inventory/items/{sku}">Delete Item</a></p>
+
+      <form method="POST" action="/inventory/items/{sku}">
+        <input type="submit" value="Delete Item">
+        <input type="hidden" name="_method" value="DELETE">
+        <input type="hidden" name="_csrf" value="{_csrf}">
+      </form>
+
     {/item}
   </div>
 {/body}
