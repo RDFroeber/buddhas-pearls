@@ -7,6 +7,7 @@
   },
   "dependencies": {
     "adaro": "^0.1.7",
+    "async": "^0.9.0",
     "aws-sdk": "^2.0.30",
     "bcrypt": "^0.8.0",
     "body-parser": "~1.8.1",
@@ -30,6 +31,7 @@
     "passport-google-oauth": "^0.1.5",
     "passport-local": "^1.0.0",
     "passport-twitter": "^1.0.2",
-    "serve-favicon": "~2.1.3"
+    "serve-favicon": "~2.1.3",
+    "underscore": "^1.7.0"
   }
 }

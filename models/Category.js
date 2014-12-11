@@ -12,9 +12,9 @@ var categorySchema = new Schema({
     require   : true,
     trim      : true
   },
-  parent: {
-    type    : Schema.Types.ObjectId, 
-    ref     : 'Category' 
+  parent      : {
+    type      : Schema.Types.ObjectId, 
+    ref       : 'Category' 
   },
   description : {
     type      : String, 

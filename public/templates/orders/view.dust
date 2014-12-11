@@ -1,0 +1,31 @@
+{>"layouts/master" /}
+
+{<body}
+  <h2>My Cart</h2>
+
+  <div>
+    {#order}
+      <h3>Order: {number}</h3>
+      <p>
+        <strong>status</strong>: {status}<br />
+        <strong>total</strong>: ${priceTotal}<br />
+        <strong>quantity</strong>: {itemTotal}<br />
+      </p>
+
+      {#itemList}
+        <p>
+          {#item}
+            <strong>item</strong>: {name}<br />
+            <img src="{imageUrl}" alt="Image of {name}" class="productImg">
+            <strong>sku</strong>: {sku}<br />
+            <strong>price</strong>: ${price}<br />
+          {/item}
+          <strong>quantity</strong>: {quantity}<br />
+        </p>
+      {/itemList}
+
+      <p><a href="/orders/cart">Edit Cart</a></p>
+
+    {/order}
+  </div>
+{/body}

@@ -12,7 +12,19 @@
         <strong>price</strong>: ${price}<br />
       </p>
       <p>{description}</p>
-      <p><a href="#">Add to Cart</a></p>
+      <form method="POST" action="/orders/cart">
+        <label for="item">
+          <input type="hidden" name="item" value="{_id}"/>
+        </label>
+
+        <label for="qty">
+          <input type="number" min="0" step="1" name="qty" value="1"/>
+        </label>
+
+        <input type="submit" value="Add to Cart">
+        <input type="hidden" name="_method" value="PUT">
+        <input type="hidden" name="_csrf" value="{_csrf}">
+      </form>
     {/item}
   </div>
 {/body}

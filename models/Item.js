@@ -5,7 +5,7 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
     moment = require('moment'),
-    Category = require('./Category');
+    Category = ('./Category');
 
 var itemSchema = new Schema({
   name        : {
@@ -13,36 +13,50 @@ var itemSchema = new Schema({
     require   : true,
     trim      : true
   },
-  category: { 
-    type      : Schema.Types.ObjectId, 
-    required  : true,
-    ref       : 'Category' 
-  },
   sku         : {
     type      : String, 
     unique    : true,
     require   : true
   },
+  category: { 
+    type      : Schema.Types.ObjectId, 
+    required  : true,
+    ref       : 'Category' 
+  },
   imageUrl    : {
     type      : String, 
-    // require   : true
+    require   : true
   },
   description : {
     type      : String, 
     require   : true,
     trim      : true
   },
-  price       : {
+  pricing     : {
+    list      : {
+      type    : Number, 
+      require : true
+    },
+    onSale    : {
+      type    : Boolean,
+      default : false 
+    },
+    discount  : {
+      type    : Number,
+      default : 0
+    },
+    total     : {
+      type    : Number, 
+      require : true
+    }
+  },
+  available   : {
     type      : Number, 
     require   : true
   },
   inStock     : {
-    type      : Number, 
-    require   : true
-  },
-  onSale      : {
-    type      : Boolean,
-    default   : false 
+    type      : Boolean, 
+    default   : true
   },
   additional  : {
     type      : String, 
@@ -62,6 +76,10 @@ var itemSchema = new Schema({
     type      : Date, 
     default   : Date.now 
   }
+});
+
+itemSchema.path('pricing.total').set(function() {
+  this.pricing.total = this.pricing.list - this.pricing.discount;
 });
 
 /**
@@ -133,25 +151,25 @@ function generateSku(category) {
 **/
 
 itemSchema.pre('save', function(next) {
-    var self = this;
+  var self = this;
 
-    if(self.isModified('sku')){
-      Category.findById(self.category).exec(function(err, category){
-        if(err) {
+  if(self.sku === undefined){
+    Category.findById(self.category).exec(function(err, category){
+      if(err) {
+        console.log(err);
+      }
+      self.sku = generateSku(category);
+      category.counter += 1;
+      category.save(function(err, updatedCategory){
+        if(err){
           console.log(err);
         }
-        self.sku = generateSku(category);
-        category.counter += 1;
-        category.save(function(err, updatedCategory){
-          if(err){
-            console.log(err);
-          }
-          return next();
-        })
+        return next();
       });
-    } else {
-      return next();
-    }
+    });
+  } else {
+    return next();
+  }
 });
 
 module.exports = mongoose.model('Item', itemSchema);

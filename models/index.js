@@ -4,12 +4,16 @@
 
 var User = require('./User'),
     Item = require('./Item'),
-    Category = require('./Category');
+    ItemQty = require('./ItemQty'),
+    Category = require('./Category'),
+    Order = require('./Order');
 
 module.exports = {
 
   User: User,
   Item: Item,
-  Category: Category
+  ItemQty: ItemQty,
+  Category: Category,
+  Order: Order
 
 };

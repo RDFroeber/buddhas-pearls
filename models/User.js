@@ -47,7 +47,7 @@ var userSchema = new Schema({
     type      : Boolean,
     default   : false 
   },
-  address     : {
+  addresses   : [{
     street    : {
       type    : String, 
       trim    : true
@@ -57,10 +57,19 @@ var userSchema = new Schema({
       trim    : true
     },
     state     : String,
-    zipcode   : Number
-  },
-  phoneNumber : {
-    type      : Number
+    zipcode   : Number,
+    primary   : Boolean
+  }],
+  numbers     : {
+    home      : {
+      type    : Number
+    },
+    cell      : {
+      type    : Number
+    },
+    work      : {
+      type    : Number
+    }
   },
   createdAt   : { 
     type      : Date, 
