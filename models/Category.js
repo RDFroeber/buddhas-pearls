@@ -12,9 +12,10 @@ var categorySchema = new Schema({
     require   : true,
     trim      : true
   },
-  parent      : {
-    type      : Schema.Types.ObjectId, 
-    ref       : 'Category' 
+  type        : {
+    type      : String, 
+    enum      : ['Jewelry', 'Misc'],
+    require   : true
   },
   description : {
     type      : String, 

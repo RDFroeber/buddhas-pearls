@@ -18,7 +18,7 @@ var itemSchema = new Schema({
     unique    : true,
     require   : true
   },
-  category: { 
+  category    : { 
     type      : Schema.Types.ObjectId, 
     required  : true,
     ref       : 'Category' 

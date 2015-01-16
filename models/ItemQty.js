@@ -8,7 +8,7 @@ var mongoose = require('mongoose'),
     Item = require('./Item');
 
 var itemQtySchema = new Schema({
-  item       : {
+  item      : {
     type    : Schema.Types.ObjectId, 
     ref     : 'Item' 
   },

@@ -9,9 +9,14 @@
       <p>
         <img src="{imageUrl}" alt="Image of {name}" class="productImg">
         <strong>sku</strong>: {sku}<br />
-        <strong>price</strong>: ${price}<br />
+        <strong>price</strong>: ${pricing.total}<br />
+        {?inStock}
+          <strong>available</strong>: {available} item(s)<br />
+        {:else}
+          <strong>none in stock</strong><br />
+        {/inStock}
       </p>
-      <p>{description}</p>
+      <p><strong>description</strong>: {description}</p>
       <p><a href="/inventory/edit/{sku}">Edit Item</a></p>
 
       <form method="POST" action="/inventory/items/{sku}">

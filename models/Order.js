@@ -24,7 +24,7 @@ var orderSchema = new Schema({
     type      : String, 
     enum      : ['Cart', 'Pending', 'Approved', 'Complete', 'Canceled']
   },
-  total       : {
+  totalPrice  : {
     type      : Number,
     default   : 0
   },

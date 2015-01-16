@@ -9,9 +9,14 @@
       {#items}
         <p>
           <img src="{imageUrl}" alt="Image of {name}" class="productImg">
-          <strong>name</strong>: {name}<br />
-          <strong>sku</strong>: {sku}<br />
-          <strong>price</strong>: ${price}<br />
+          <strong>{name}</strong> {sku}<br />
+          <strong>price</strong>: ${pricing.total}<br />
+          {?inStock}
+            <strong>in stock</strong><br />
+          {:else}
+            <strong>not in stock</strong><br />
+          {/inStock}
+          {description}<br />
         </p>
         <p><a href="/store/items/{sku}">Detail</a></p>
       {/items}
