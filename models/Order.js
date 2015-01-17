@@ -4,7 +4,8 @@
 
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
-    moment = require('moment');
+    moment = require('moment'),
+    async = require('async');
 
 var orderSchema = new Schema({
   number      : {
@@ -67,6 +68,32 @@ function generateOrderNum() {
   return new Date().getTime();
 };
 
+function calculateTotal(self, next) {
+  var order = self,
+      orderTotal = 0,
+      orderQuant = 0;
+
+  async.each(order.itemList, function(itemQtyId, callback) {
+    ItemQty.findById(itemQtyId).exec(function(err, item){
+      if(err){
+        console.log(err);
+      } else {
+        orderQuant += item.qty;
+        orderTotal += parseInt(item.itemTotal, 10);
+        callback(err, item);
+      }
+    });
+  }, function(err, item){
+    if(err){
+      console.log(err);
+    } else {
+      order.totalPrice = orderTotal;
+      order.quantity = orderQuant;
+      return next();
+    }
+  });
+};
+
 /**
 * Pre-Save
 **/
@@ -74,12 +101,14 @@ function generateOrderNum() {
 orderSchema.pre('save', function(next) {
   var self = this;
 
-  if(self.number === undefined){
-    self.number = generateOrderNum();
-    return next();
-  } else {
-    return next();
-  }
+  calculateTotal(self, function(){
+    if(self.number === undefined){
+      self.number = generateOrderNum();
+      return next();
+    } else {
+      return next();
+    }
+  });
 });
 
 module.exports = mongoose.model('Order', orderSchema);

@@ -9,7 +9,7 @@
       <p>
         <img src="{imageUrl}" alt="Image of {name}" class="productImg">
         <strong>sku</strong>: {sku}<br />
-        <strong>price</strong>: ${price}<br />
+        <strong>price</strong>: ${pricing.total}<br />
       </p>
       <p>{description}</p>
       <form method="POST" action="/orders/cart">

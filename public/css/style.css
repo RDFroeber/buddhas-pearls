@@ -64,4 +64,9 @@ img.productImg {
   max-width: 100px;
 }
 
+div.order .line-item p {
+  display: table-cell; 
+  width: 100px;
+}
+
 

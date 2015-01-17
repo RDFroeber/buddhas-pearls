@@ -5,7 +5,7 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
     moment = require('moment'),
-    Category = ('./Category');
+    Category = ('./Category'); 
 
 var itemSchema = new Schema({
   name        : {

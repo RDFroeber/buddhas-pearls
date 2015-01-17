@@ -3,26 +3,29 @@
 {<body}
   <h2>My Cart</h2>
 
-  <div>
+  <div class="order">
     {#order}
       <h3>Order: {number}</h3>
-      <p>
-        <strong>status</strong>: {status}<br />
-        <strong>total</strong>: ${priceTotal}<br />
-        <strong>quantity</strong>: {itemTotal}<br />
-      </p>
 
       {#itemList}
-        <p>
+        <div class="line-item">
           {#item}
-            <strong>item</strong>: {name}<br />
-            <img src="{imageUrl}" alt="Image of {name}" class="productImg">
-            <strong>sku</strong>: {sku}<br />
-            <strong>price</strong>: ${price}<br />
+            <p><img src="{imageUrl}" alt="Image of {name}" class="productImg">{name}</p>
+            <p><strong>sku</strong>: {sku}</p>
+            <p><strong>price</strong>: ${pricing.total}</p>
           {/item}
-          <strong>quantity</strong>: {quantity}<br />
-        </p>
+          <p>
+            <strong>total</strong>: ${itemTotal}<br />
+            <strong>quantity</strong>: {qty}<br />
+          </p>
+        </div><br />
       {/itemList}
+
+      <p>
+        <strong>status</strong>: {status}<br />
+        <strong>total</strong>: ${totalPrice}<br />
+        <strong>quantity</strong>: {quantity}<br />
+      </p>
 
       <p><a href="/orders/cart">Edit Cart</a></p>
 
