@@ -32,6 +32,7 @@
       {:else}
         <li><a href="/login">Login</a></li>
       {/user}
+      <li><a href="/cart">Cart</a></li>
     </ul>
   </nav>
 </header>

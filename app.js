@@ -86,9 +86,10 @@ app.use(flash());
 
 app.use('/', require('./routes'));
 app.use('/', require('./routes/login'));
-app.use('/account', require('./routes/users'));
 app.use('/store', require('./routes/store'));
-app.use('/orders', require('./routes/orders'));
+app.use('/cart', require('./routes/cart'));
+app.use('/account', require('./routes/users'));
+app.use('/account/orders', require('./routes/orders'));
 app.use('/admin', require('./routes/admin'));
 app.use('/inventory', require('./routes/items'));
 app.use('/inventory', require('./routes/categories'));

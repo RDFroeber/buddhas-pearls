@@ -1,7 +1,7 @@
 {>"layouts/master" /}
 
 {<body}
-  <h2>My Order</h2>
+  <h2>My Cart</h2>
 
   <div class="order">
     {?order}
@@ -27,9 +27,11 @@
           <strong>total</strong>: ${totalPrice}<br />
           <strong>quantity</strong>: {quantity}<br />
         </p>
+
+        <p><a href="/cart">Edit Cart</a></p>
       {/order}
     {:else}
-      <p>We could not find that order.</p>
+      <p>You're cart is empty.</p>
     {/order}
   </div>
 {/body}

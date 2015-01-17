@@ -12,7 +12,7 @@
         <strong>price</strong>: ${pricing.total}<br />
       </p>
       <p>{description}</p>
-      <form method="POST" action="/orders/cart">
+      <form method="POST" action="/cart">
         <label for="item">
           <input type="hidden" name="item" value="{_id}"/>
         </label>
