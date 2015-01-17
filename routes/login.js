@@ -44,11 +44,7 @@ loginRouter.route('/login')
       failureRedirect : '/login',
       failureFlash: true
     }), function(req, res){
-      if(req.user.isAdmin){
-        return res.redirect('/admin');
-      } else {
-        return res.redirect('/account');
-      } 
+      updateCartAndRedirect(req, res); 
   });
 
 loginRouter.route('/logout')
@@ -69,11 +65,7 @@ loginRouter.route('/auth/google/callback')
       failureRedirect : '/',
       failureFlash: true
     }), function(req, res){
-      if(req.user.isAdmin){
-        return res.redirect('/admin');
-      } else {
-        return res.redirect('/account');
-      } 
+      updateCartAndRedirect(req, res); 
   });
 
 /**
@@ -87,11 +79,7 @@ loginRouter.route('/auth/facebook/callback')
   .get(passport.authenticate('facebook', {
       failureRedirect : '/'
     }), function(req, res){
-      if(req.user.isAdmin){
-        return res.redirect('/admin');
-      } else {
-        return res.redirect('/account');
-      } 
+      updateCartAndRedirect(req, res); 
   });
 
 /**
@@ -105,11 +93,7 @@ loginRouter.route('/auth/facebook/callback')
   .get(passport.authenticate('twitter', {
       failureRedirect : '/'
     }), function(req, res){
-      if(req.user.isAdmin){
-        return res.redirect('/admin');
-      } else {
-        return res.redirect('/account');
-      } 
+      updateCartAndRedirect(req, res); 
   });
 
 /**
@@ -176,5 +160,25 @@ loginRouter.route('/unlink/twitter')
       res.redirect('/account/settings');
     });
   });
+
+
+/**
+ * Private Methods
+ **/
+
+function updateCartAndRedirect(req, res){
+  if(req.session.cart && req.session.cart.number){
+    Order.update({number: req.session.cart.number}, {user: req.user._id}, function(err, order){
+      if(err){
+        console.log(err);
+      }
+    });
+  }
+  if(req.user.isAdmin){
+    return res.redirect('/admin');
+  } else {
+    return res.redirect('/account');
+  } 
+}
 
 module.exports = loginRouter;
