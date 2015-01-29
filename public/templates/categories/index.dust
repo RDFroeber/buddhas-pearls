@@ -2,20 +2,15 @@
 
 {<body}
   <section>
-    <h2>Inventory</h2>
+    <h2>Inventory Categories</h2>
 
     <div>
-      <h3>Categories</h3>
+      <h3>View All</h3>
       {?categories}
         {#categories}
           <p>
             <strong>name</strong>: {name}<br />
-            <strong>parent</strong>: 
-            {?parent}
-              {parent.name}
-            {:else}
-              none
-            {/parent}
+            <strong>type</strong>: {type}
           </p>
           {?description}
             <p>{description}</p>

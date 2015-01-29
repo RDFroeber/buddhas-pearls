@@ -8,11 +8,12 @@
   <section>
     <p>Buddhas &amp; Pearls is a jewelry boutique dedicated to crafting original and unique pieces.</p>
 
+    <form action="/">
+      <label for="newsletter">
+        <input type="text" id="newsletter" placeholder="Enter Your Email Address...">
+      </label>
+      <input type="submit" value="Sign Up Now!">
+    </form>
   </section>
-
-<!--   <section>
-    <h2>Contact Us</h2>
-
-  </section> -->
 
 {/body}

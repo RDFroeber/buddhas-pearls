@@ -21,12 +21,12 @@
           {/categories}
         </select><br />
 
-        <label for="price">
-          $ <input type="number" min="0.00" step="0.01" name="price" placeholder="Price" />
+        <label for="pricing.list">
+          $ <input type="number" min="0.00" step="0.01" name="pricing.list" placeholder="Price" />
         </label>
 
-        <label for="inStock">
-          <input type="number" name="inStock" placeholder="Quantity available" value="1" />
+        <label for="available">
+          <input type="number" name="available" placeholder="Quantity available" value="1" />
         </label>
 
         <label for="description">

@@ -4,7 +4,16 @@
   <section>
 
     <h2>{greeting}</h2>
-    <p>Welcome to the Administrators private club. No customers allowed here.</p>
+    <p>Welcome to the Administrators main page! No customers allowed here.</p>
 
+    <p><a href="/inventory">View Current Inventory</a></p>
+
+    <p><a href="/inventory/new">Add Item to Inventory</a></p>
+
+    <p><a href="/inventory/categories">View Inventory Categories</a></p>
+
+    <p><a href="/admin/orders">View Orders</a></p>
+
+    <p><a href="/admin/users">View Users</a></p>
   </section>
 {/body}

@@ -2,7 +2,7 @@
 
 {<body}
   <section>
-    <h2>Inventory</h2>
+    <h2>Inventory Categories</h2>
 
     <div>
       <h3>Add Category</h3>
@@ -11,11 +11,9 @@
           <input type="text" name="name" placeholder="Category name" />
         </label>
 
-        <select name="parent">
-          <option value="null">no parent</option>
-          {#categories}
-            <option value="{._id}">{.name}</option>
-          {/categories}
+        <select name="type">
+          <option value="Jewelry">Jewelry</option>
+          <option value="Misc">Misc</option>
         </select>
 
         <label for="description">

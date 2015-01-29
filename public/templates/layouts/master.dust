@@ -34,7 +34,7 @@
     <ul>
       <li><a href="#new">New</a></li>
       <li><a href="/store">Shop</a></li>
-      <li><a href="#sale">Sale</a></li>
+      <li><a href="/store/sale">Sale</a></li>
       <li><a href="/about">About</a></li>
     </ul>
   </nav> 
