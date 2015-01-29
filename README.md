@@ -19,11 +19,11 @@ Buddhas & Pearls is a jewelry boutique dedicated to crafting original and unique
 ## Installation
 
 ```
-  git clone https://github.com/RDFroeber/buddhas-pearls.git
-  cd buddhas-pearls/
-  npm install
-  npm install nodemon -g
-  npm start
+$  git clone https://github.com/RDFroeber/buddhas-pearls.git
+$  cd buddhas-pearls/
+$  npm install
+$  npm install nodemon -g
+$  npm start
 ```
 
 ## OAuth Authentication
@@ -36,20 +36,25 @@ In order to login via OAuth client IDs and keys are required. If you would like 
 
 ## Item Images
 
-Item images are store in S3. If you would like to upload any images, use the following steps.
+Item images are store in S3. If you would like to upload any images, use the following steps:
 
 * Rename `authSample.js` to `auth.js`
 * Update the accessKeyId and secretAccessKey
-* Create an S3 bucket under your account
+* Create an S3 bucket under your AWS account
 * Replace the imagePath variable found in `routes/items` with your bucket URL
+* You should now be able to upload images
 
 ## Tests
 
+There are a few test for the User and Order models currently. More tests will be added soon. To run the test suite, use the following command:
+
 ```
-  npm test
+$  npm test
 ```
 
 ## Dependencies
+
+This application relies on the following npm packages:
 
 - [adaro](https://github.com/krakenjs/adaro): An express renderer for DustJs Templates
 - [async](https://github.com/caolan/async): Higher-order functions and common patterns for asynchronous code
@@ -70,6 +75,7 @@ Item images are store in S3. If you would like to upload any images, use the fol
 - [mongoose](https://github.com/LearnBoost/mongoose): Mongoose MongoDB ODM
 - [morgan](https://github.com/expressjs/morgan): http request logger middleware for node.js
 - [multer](https://github.com/expressjs/multer): Middleware for handling `multipart/form-data`.
+- [nodemon](https://github.com/remy/nodemon): Simple monitor script for use during development of a node.js app.
 - [passport](https://github.com/jaredhanson/passport): Simple, unobtrusive authentication for Node.js.
 - [passport-facebook](https://github.com/jaredhanson/passport-facebook): Facebook authentication strategy for Passport.
 - [passport-google-oauth](https://github.com/jaredhanson/passport-google-oauth): Google (OAuth) authentication strategies for Passport.
