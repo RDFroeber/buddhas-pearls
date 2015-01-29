@@ -18,7 +18,7 @@ Buddhas & Pearls is a jewelry boutique dedicated to crafting original and unique
 
 ## Installation
 
-```sh
+```
   git clone https://github.com/RDFroeber/buddhas-pearls.git
   cd buddhas-pearls/
   npm install
@@ -40,11 +40,11 @@ Item images are store in S3. If you would like to upload any images, use the fol
 * Rename `authSample.js` to `auth.js`
 * Update the accessKeyId and secretAccessKey
 * Create an S3 bucket under your account
-* Replace the imagePath `var imagePath = 'https://divorante.s3-us-west-2.amazonaws.com/'` with your bucket URL
+* Replace the imagePath variable found in `routes/items` with your bucket URL
 
 ## Tests
 
-```sh
+```
   npm test
 ```
 
