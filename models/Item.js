@@ -5,7 +5,7 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
     moment = require('moment'),
-    Category = ('./Category'); 
+    Category = require('./Category'); 
 
 var itemSchema = new Schema({
   name        : {
@@ -78,10 +78,6 @@ var itemSchema = new Schema({
   }
 });
 
-itemSchema.path('pricing.total').set(function() {
-  this.pricing.total = this.pricing.list - this.pricing.discount;
-});
-
 /**
 * Set Global Virtual Attributes
 **/
@@ -152,6 +148,8 @@ function generateSku(category) {
 
 itemSchema.pre('save', function(next) {
   var self = this;
+  // Set Total Price
+  this.pricing.total = this.pricing.list - this.pricing.discount;
 
   if(self.sku === undefined){
     Category.findById(self.category).exec(function(err, category){
