@@ -48,6 +48,7 @@
     "url": "https://github.com/RDFroeber/buddhas-pearls/issues"
   },
   "devDependencies": {
-    "chai": "^1.10.0"
+    "chai": "^1.10.0",
+    "mocha": "^2.1.0"
   }
 }
