@@ -1,9 +1,13 @@
 {
   "name": "buddhas",
-  "version": "0.0.1",
+  "version": "0.0.2",
+  "author": "Raleigh D. Froeber <RDFroeber@gmail.com> (http://raleighdaniel.com/)",
+  "description": "Buddhas & Pearls is a jewelry boutique dedicated to crafting original and unique pieces",
+  "keywords": [],
   "private": true,
   "scripts": {
-    "start": "nodemon ./bin/www"
+    "start": "nodemon ./bin/www",
+    "test": "mocha test --reporter spec"
   },
   "dependencies": {
     "adaro": "^0.1.7",
@@ -33,5 +37,17 @@
     "passport-twitter": "^1.0.2",
     "serve-favicon": "~2.1.3",
     "underscore": "^1.7.0"
+  },
+  "license": "",
+  "homepage": "https://github.com/RDFroeber/buddhas-pearls",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RDFroeber/buddhas-pearls.git"
+  },
+  "bugs": {
+    "url": "https://github.com/RDFroeber/buddhas-pearls/issues"
+  },
+  "devDependencies": {
+    "chai": "^1.10.0"
   }
 }
