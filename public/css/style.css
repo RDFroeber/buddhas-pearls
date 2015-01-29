@@ -74,7 +74,7 @@ div.wrapper {
 div.wrapper:after {
   content: "";
   display: block;
-  height: 10px;
+  height: 150px;
 }
 
 div.logo {
@@ -108,7 +108,7 @@ nav.main li a:visited {
 
 nav.main li a:hover,
 nav.main li a:active {
-  border: 1px #7DD0CB solid;
+  border-bottom: 1px #7DD0CB solid;
 }
 
 nav.main {
@@ -155,13 +155,13 @@ p {
 /* Links */
 a:link,
 a:visited {
-  color: #F8D2C5;
+  color: #7DD0CB;
   text-decoration: none;
 }
 
 a:hover,
 a:active {
-  color: #7DD0CB;
+  color: #F8D2C5;
   -moz-transition: all .3s;
   -webkit-transition: all .3s;
   -o-transition: all .3s;
@@ -172,13 +172,14 @@ a:active {
 /*** Home Section ***/
 section {
   padding: 50px;
+  position: relative;
   margin: 0 auto;
 }
 
 section.banner {
   background: url('../img/boho_style.jpg') no-repeat center top;
   background-size: cover;
-  height: 500px;
+  height: 600px;
   margin: 0px;
   padding: 0px;
   position: relative;
@@ -221,7 +222,7 @@ footer nav ul li a:active {
 
 img.productImg {
   display: block;
-  max-width: 100px;
+  max-height: 120px;
 }
 
 div.order .line-item p {
@@ -240,38 +241,39 @@ button:hover, input[type=submit]:hover {
   background-color: #F6F4F2;
 }
 
-
-
-/*  Column Grid Layout */
-.col {
-  display: block;
-  float:left;
-  margin: 20px;
-  min-width: 200px;
-}
-
-.col:first-child { 
-  margin-left: 0; 
-}
-
-.4-of-4 {
+.about {
+  background: url('../img/boho_style.jpg') no-repeat left bottom;
+  background-size: cover;
+  height: 400px;
+  margin: 0px;
+  padding: 0px;
+  position: relative;
   width: 100%;
 }
 
-.3-of-4 {
-  width: 74.5%;
+/*  Item Grid Layout */
+
+.container {
+  width: 100%;
 }
 
-.2-of-4 {
-  width: 49%;
+.grid-20 {
+  display: inline-block;
+  width: 20%;
+  vertical-align: top;
 }
 
-.1-of-4 {
-  width: 23.5%;
+.grid-80 {
+  display: inline-block;
+  width: 80%;
+  vertical-align: top;
 }
 
-/*  GO FULL WIDTH BELOW 480 PIXELS */
-@media only screen and (max-width: 480px) {
-  .col {  margin: 1% 0 1% 0%; }
-  .span_1_of_4, .span_2_of_4, .span_3_of_4, .span_4_of_4 { width: 100%; }
+.items {
+  display: inline-block;
+  margin: 20px;
+  min-width: 250px;
+  /*width: 300px;*/
+  vertical-align: top;
 }
+
