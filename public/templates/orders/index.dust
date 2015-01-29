@@ -1,21 +1,23 @@
 {>"layouts/master" /}
 
 {<body}
-  <h2>My Orders</h2>
+  <section>
+    <h2>My Orders</h2>
 
-  <div class="order">
-    {?orders}
-      {#orders}
-        <h3>Order: {number}</h3>
-        <p>
-          <strong>status</strong>: {status}<br />
-          <strong>total</strong>: ${totalPrice}<br />
-          <strong>quantity</strong>: {quantity}<br />
-        </p>
-        <p><a href="/account/orders/{number}">View Order</a></p>
+    <div class="order">
+      {?orders}
+        {#orders}
+          <h3>Order: {number}</h3>
+          <p>
+            <strong>status</strong>: {status}<br />
+            <strong>total</strong>: ${totalPrice}<br />
+            <strong>quantity</strong>: {quantity}<br />
+          </p>
+          <p><a href="/account/orders/{number}">View Order</a></p>
+        {/orders}
+      {:else}
+        <p>You do not have any orders.</p>
       {/orders}
-    {:else}
-      <p>You do not have any orders.</p>
-    {/orders}
-  </div>
+    </div>
+  </section>
 {/body}

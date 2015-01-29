@@ -1,62 +1,63 @@
 {>"layouts/master" /}
 
 {<body}
-  <h2>Account Settings</h2>
-  <div>
-    <h3>User Account</h3>
-      <p>
-        <strong>id</strong>: {user._id}<br />
-        <strong>name</strong>: {user.firstName} {user.lastName}<br />
-        <strong>email</strong>: {user.local.email}<br />
-        <strong>password</strong>: {user.local.password}<br />
-      </p>
-      <p><a href="/account/edit">Edit Account</a></p>
-  </div>
+  <section>
+    <h2>Account Settings</h2>
+    <div>
+      <h3>User Account</h3>
+        <p>
+          <strong>id</strong>: {user._id}<br />
+          <strong>name</strong>: {user.firstName} {user.lastName}<br />
+          <strong>email</strong>: {user.local.email}<br />
+          <strong>password</strong>: {user.local.password}<br />
+        </p>
+        <p><a href="/account/edit">Edit Account</a></p>
+    </div>
 
-  <div>
-    <h3>Google+ Account</h3>
-    {?user.google.token}
-      <p>
-        <strong>id</strong>: {user.google.id}<br />
-        <strong>name</strong>: {user.google.name}<br />
-        <strong>email</strong>: {user.google.email}<br />
-        <strong>token</strong>: {user.google.token}<br />
-      </p>
-      <p><a href="/unlink/google">Unlink Account</a></p>
-    {:else}
-      <p><a href="/connect/google">Connect Google</a></p>
-    {/user.google.token}
-  </div>
+    <div>
+      <h3>Google+ Account</h3>
+      {?user.google.token}
+        <p>
+          <strong>id</strong>: {user.google.id}<br />
+          <strong>name</strong>: {user.google.name}<br />
+          <strong>email</strong>: {user.google.email}<br />
+          <strong>token</strong>: {user.google.token}<br />
+        </p>
+        <p><a href="/unlink/google">Unlink Account</a></p>
+      {:else}
+        <p><a href="/connect/google">Connect Google</a></p>
+      {/user.google.token}
+    </div>
 
-  <div>
-    <h3>Facebook Account</h3>
-    {?user.facebook.token}
-      <p>
-        <strong>id</strong>: {user.facebook.id}<br />
-        <strong>name</strong>: {user.facebook.name}<br />
-        <strong>email</strong>: {user.facebook.email}<br />
-        <strong>token</strong>: {user.facebook.token}<br />
-      </p>
-      <p><a href="/unlink/facebook">Unlink Account</a></p>
-    {:else}
-      <p><a href="/connect/facebook">Connect Facebook</a></p>
-    {/user.facebook.token}
-  </div>
+    <div>
+      <h3>Facebook Account</h3>
+      {?user.facebook.token}
+        <p>
+          <strong>id</strong>: {user.facebook.id}<br />
+          <strong>name</strong>: {user.facebook.name}<br />
+          <strong>email</strong>: {user.facebook.email}<br />
+          <strong>token</strong>: {user.facebook.token}<br />
+        </p>
+        <p><a href="/unlink/facebook">Unlink Account</a></p>
+      {:else}
+        <p><a href="/connect/facebook">Connect Facebook</a></p>
+      {/user.facebook.token}
+    </div>
 
-  <div>
-    <h3>Twitter Account</h3>
-    {?user.twitter.token}
-      <p>
-        <strong>id</strong>: {user.twitter.id}<br />
-        <strong>display name</strong>: {user.twitter.displayName}<br />
-        <strong>username</strong>: {user.twitter.username}<br />
-        <strong>token</strong>: {user.twitter.token}<br />
-      </p>
-      <p><a href="/unlink/twitter">Unlink Account</a></p>
-    {:else}
-      <p><a href="/connect/twitter">Connect Twitter</a></p>
-    {/user.twitter.token}
-  </div>
-
+    <div>
+      <h3>Twitter Account</h3>
+      {?user.twitter.token}
+        <p>
+          <strong>id</strong>: {user.twitter.id}<br />
+          <strong>display name</strong>: {user.twitter.displayName}<br />
+          <strong>username</strong>: {user.twitter.username}<br />
+          <strong>token</strong>: {user.twitter.token}<br />
+        </p>
+        <p><a href="/unlink/twitter">Unlink Account</a></p>
+      {:else}
+        <p><a href="/connect/twitter">Connect Twitter</a></p>
+      {/user.twitter.token}
+    </div>
+  </section>
   
 {/body}

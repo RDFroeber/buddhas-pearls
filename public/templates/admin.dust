@@ -1,7 +1,10 @@
 {>"layouts/master" /}
 
 {<body}
-  <h2>{greeting}</h2>
-  <p>Welcome to the Administrators private club. No customers allowed here.</p>
+  <section>
 
+    <h2>{greeting}</h2>
+    <p>Welcome to the Administrators private club. No customers allowed here.</p>
+
+  </section>
 {/body}

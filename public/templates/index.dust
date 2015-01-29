@@ -1,25 +1,18 @@
 {>"layouts/master" /}
 
 {<body}
-  <h2>{greeting}</h2>
+  
+  <section class="banner">
+  </section>
 
-  <p>Sign up:</p>
-  <p><a href="/signup">Create Account</a></p>
+  <section>
+    <p>Buddhas &amp; Pearls is a jewelry boutique dedicated to crafting original and unique pieces.</p>
 
-  <form id="mgform">
-    <fieldset>
-      <p>Mailgun Form</p>
+  </section>
 
-      <label for="mail">
-        <input type="text" id="mail" placeholder="YourEmail@address.com">
-      </label><br />
+<!--   <section>
+    <h2>Contact Us</h2>
 
-      <button value="bulk" onclick="mgform.hid=this.value">Send transactional</button><br />
-      <button value="list" onclick="mgform.hid=this.value"> Add to list</button><br />
-      <button value="invoice" onclick="mgform.hid=this.value"> Send invoice</button><br />
+  </section> -->
 
-      <input type="hidden" name="_csrf" value="{_csrf}"/>
-      <script type="text/javascript" src="/js/mailForm.js"></script>
-    </fieldset>
-  </form>
 {/body}

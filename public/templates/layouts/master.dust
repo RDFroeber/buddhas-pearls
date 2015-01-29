@@ -1,46 +1,77 @@
 <!DOCTYPE html>
-<html lang="en" ng-app>
+<html lang="en">
 <head>
-  <meta charset="utf-8"/>
-  <title>{+title /}</title>
-  <link rel="stylesheet" href="/css/style.css"/>
-</head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Buddhas &amp; Pearls</title>
+  
+  <!-- Icons -->
+  <!-- <link rel="apple-touch-icon" sizes="144x144" href="img/apple-touch-icon.png"> -->
+  <!-- <link rel="shortcut icon" sizes="48x48" type="image/png" href="img/favicon.ico"> -->
+  
+  <!-- STYLESHEETS -->
+  <!-- <link rel="stylesheet" type="text/css" href="css/normalize.css" /> -->
+  <link href='http://fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,400italic' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" type="text/css" href="/css/style.css" />
 
+  <!-- IE Fix for HTML5 Tags -->
+  <!--[if lt IE 9]>
+    <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+  <![endif]-->
+</head>
 <body>
+
 <header>
   <div class="logo">
-    <h1>Buddhas &amp; Pearls</h1>
     {?home}
-    <img src="/img/buddhas.png" alt="Buddhas &amp; Pearls Logo">
+    <h1>Buddhas &amp; Pearls</h1>
     {:else}
-    <a href="/"><img src="/img/buddhas.png" alt="Buddhas &amp; Pearls Logo"></a>
+    <a href="/"><h1>Buddhas &amp; Pearls</h1></a>
     {/home}
   </div>
-  <nav class="main-nav">
+
+  <nav class="main">
     <ul>
+      <li><a href="#new">New</a></li>
+      <li><a href="/store">Shop</a></li>
+      <li><a href="#sale">Sale</a></li>
       <li><a href="/about">About</a></li>
-      <li><a href="/store">Store</a></li>
+    </ul>
+  </nav> 
+
+  <nav class="account">
+    <ul>
       {#user}
         {?user.isAdmin}
           <li><a href="/admin">Admin</a></li>
           <li><a href="/inventory">Inventory</a></li>
         {:else}
-          <li><a href="/account">Dashboard</a></li>
+          <li><a href="/account">My Account</a></li>
         {/user.isAdmin}
-        <li><a href="/account/settings">Account Settings</a></li>
         <li><a href="/logout">Logout</a></li>
       {:else}
         <li><a href="/login">Login</a></li>
       {/user}
-      <li><a href="/cart">Cart</a></li>
+      <li><a href="/cart">Shopping Cart</a></li>
     </ul>
-  </nav>
-</header>
+  </nav> 
+</header> 
 
 <div class="wrapper">
   {+body /}
 </div>
 
-<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.3.6/angular.min.js"></script>
+<footer>
+  <p>&copy; 2015 Buddhas &amp; Pearls. All Rights Reserved.</p>
+  <nav class="footer">
+    <ul>
+      <li><a href="#terms">TERMS OF USE</a></li>
+      <li><a href="#privacy">PRIVACY &amp; SECURITY</a></li>
+      <li><a href="#returns">RETURN POLICY</a></li>
+      <li><a href="#sitemap">SITE MAP</a></li>
+    </ul>
+  </nav>
+</footer>
+
 </body>
 </html>

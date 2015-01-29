@@ -1,12 +1,22 @@
 {>"layouts/master" /}
 
 {<body}
-  <h2>{greeting}</h2>
-  <p>Welcome <strong>{user.fullName}</strong>! You 
-    {?user.isAdmin}
-      <strong>are</strong>
-    {:else}
-      <strong>are not</strong>
-    {/user.isAdmin} an Admin user.</p>
-    <p>Your email address: {user.email}</p>
+  <section>
+    <h2>Account Main</h2>
+    
+    <p>Welcome <strong>{user.fullName}</strong>! You 
+      {?user.isAdmin}
+        <strong>are</strong>
+      {:else}
+        are <strong>not</strong>
+      {/user.isAdmin} an Admin user.</p>
+
+    <p>Your email address: {user.email}</p><br />
+
+    <p><a href="/account/settings">Account Settings</a></p>
+
+    <p><a href="/account/orders">View My Orders</a></p>
+
+    <p><a href="/cart/checkout">Checkout</a></p>
+  </section>
 {/body}

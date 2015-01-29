@@ -1,0 +1,25 @@
+{>"layouts/master" /}
+
+{<body}
+  <h2>Newsletter</h2>
+
+  <p>Sign up:</p>
+  <p><a href="/signup">Create Account</a></p>
+
+  <form id="mgform">
+    <fieldset>
+      <p>Mailgun Form</p>
+
+      <label for="mail">
+        <input type="text" id="mail" placeholder="YourEmail@address.com">
+      </label><br />
+
+      <button value="bulk" onclick="mgform.hid=this.value">Send transactional</button><br />
+      <button value="list" onclick="mgform.hid=this.value"> Add to list</button><br />
+      <button value="invoice" onclick="mgform.hid=this.value"> Send invoice</button><br />
+
+      <input type="hidden" name="_csrf" value="{_csrf}"/>
+      <script type="text/javascript" src="/js/mailForm.js"></script>
+    </fieldset>
+  </form>
+{/body}

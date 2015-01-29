@@ -1,30 +1,32 @@
 {>"layouts/master" /}
 
 {<body}
-  <h2>Store</h2>
+  <section>
+    <h2>Store</h2>
 
-  <div>
-    {#item}
-      <h3>{name}</h3>
-      <p>
-        <img src="{imageUrl}" alt="Image of {name}" class="productImg">
-        <strong>sku</strong>: {sku}<br />
-        <strong>price</strong>: ${pricing.total}<br />
-      </p>
-      <p>{description}</p>
-      <form method="POST" action="/cart">
-        <label for="item">
-          <input type="hidden" name="item" value="{_id}"/>
-        </label>
+    <div>
+      {#item}
+        <h3>{name}</h3>
+        <p>
+          <img src="{imageUrl}" alt="Image of {name}" class="productImg">
+          <strong>sku</strong>: {sku}<br />
+          <strong>price</strong>: ${pricing.total}<br />
+        </p>
+        <p>{description}</p>
+        <form method="POST" action="/cart">
+          <label for="item">
+            <input type="hidden" name="item" value="{_id}"/>
+          </label>
 
-        <label for="qty">
-          <input type="number" min="0" step="1" name="qty" value="1"/>
-        </label>
+          <label for="qty">
+            <input type="number" min="0" step="1" name="qty" value="1"/>
+          </label>
 
-        <input type="submit" value="Add to Cart">
-        <input type="hidden" name="_method" value="PUT">
-        <input type="hidden" name="_csrf" value="{_csrf}">
-      </form>
-    {/item}
-  </div>
+          <input type="submit" value="Add to Cart">
+          <input type="hidden" name="_method" value="PUT">
+          <input type="hidden" name="_csrf" value="{_csrf}">
+        </form>
+      {/item}
+    </div>
+  </section>
 {/body}

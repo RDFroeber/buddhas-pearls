@@ -1,35 +1,37 @@
 {>"layouts/master" /}
 
 {<body}
-  <form action="/login" method="post">
-    <fieldset>
-      <h2>Login</h2>
-      {?message}
-        <p>{message}</p>
-      {/message}
-      <table>
-        <tr>
-          <td><label for="email">Login: </label></td>
-          <td><input id="email" name="email" type="email"/></td>
-        </tr>
-        <tr>
-          <td><label for="password">Password: </label></td>
-          <td><input id="password" name="password" type="password"/></td>
-        </tr>
-        <tr>
-          <td>
-            <input type="submit" value="Login"/>
-            <input type="hidden" name="_csrf" value="{_csrf}"/>
-          </td>
-        </tr>
-      </table>
-    </fieldset>
-  </form>
+  <section>
+    <form action="/login" method="post">
+      <fieldset>
+        <h2>Login</h2>
+        {?message}
+          <p>{message}</p>
+        {/message}
+        <table>
+          <tr>
+            <td><label for="email">Login: </label></td>
+            <td><input id="email" name="email" type="email"/></td>
+          </tr>
+          <tr>
+            <td><label for="password">Password: </label></td>
+            <td><input id="password" name="password" type="password"/></td>
+          </tr>
+          <tr>
+            <td>
+              <input type="submit" value="Login"/>
+              <input type="hidden" name="_csrf" value="{_csrf}"/>
+            </td>
+          </tr>
+        </table>
+      </fieldset>
+    </form>
 
-  <p>Don't have an account? <a href="/signup">Signup</a></p>
+    <p>Don't have an account? <a href="/signup">Signup</a></p>
 
-  <p>Login with Google, Facebook or Twitter:</p>
-  <p><a href="/auth/google">Google+</a></p>
-  <p><a href="/auth/facebook">Facebook</a></p>
-  <p><a href="/auth/twitter">Twitter</a></p>
+    <p>Login with Google, Facebook or Twitter:</p>
+    <p><a href="/auth/google">Google+</a></p>
+    <p><a href="/auth/facebook">Facebook</a></p>
+    <p><a href="/auth/twitter">Twitter</a></p>
+  </section>
 {/body}

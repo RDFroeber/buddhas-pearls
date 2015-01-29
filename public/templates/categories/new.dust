@@ -1,28 +1,30 @@
 {>"layouts/master" /}
 
 {<body}
-  <h2>Inventory</h2>
+  <section>
+    <h2>Inventory</h2>
 
-  <div>
-    <h3>Add Category</h3>
-    <form action="/inventory/categories" method="POST">
-      <label for="name">
-        <input type="text" name="name" placeholder="Category name" />
-      </label>
+    <div>
+      <h3>Add Category</h3>
+      <form action="/inventory/categories" method="POST">
+        <label for="name">
+          <input type="text" name="name" placeholder="Category name" />
+        </label>
 
-      <select name="parent">
-        <option value="null">no parent</option>
-        {#categories}
-          <option value="{._id}">{.name}</option>
-        {/categories}
-      </select>
+        <select name="parent">
+          <option value="null">no parent</option>
+          {#categories}
+            <option value="{._id}">{.name}</option>
+          {/categories}
+        </select>
 
-      <label for="description">
-        <input type="text" name="description" placeholder="Category description" />
-      </label>
+        <label for="description">
+          <input type="text" name="description" placeholder="Category description" />
+        </label>
 
-      <input type="submit" value="Create"/>
-      <input type="hidden" name="_csrf" value="{_csrf}"/>
-    </form>
-  </div>
+        <input type="submit" value="Create"/>
+        <input type="hidden" name="_csrf" value="{_csrf}"/>
+      </form>
+    </div>
+  </section>
 {/body}

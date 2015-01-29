@@ -1,39 +1,41 @@
 {>"layouts/master" /}
 
 {<body}
-  <h2>Inventory</h2>
+  <section>
+    <h2>Inventory</h2>
 
-  <div>
-    <h3>Add Item</h3>
-    <form action="/inventory" method="POST" enctype="multipart/form-data">
-      <label for="name">
-        <input type="text" name="name" placeholder="Item name" />
-      </label>
+    <div>
+      <h3>Add Item</h3>
+      <form action="/inventory" method="POST" enctype="multipart/form-data">
+        <label for="name">
+          <input type="text" name="name" placeholder="Item name" />
+        </label>
 
-      <label for="image">
-        <input type="file" name="image" accept="image/*" />
-      </label>
+        <label for="image">
+          <input type="file" name="image" accept="image/*" />
+        </label>
 
-      <select name="category">
-        {#categories}
-          <option value="{._id}">{.name}</option>
-        {/categories}
-      </select><br />
+        <select name="category">
+          {#categories}
+            <option value="{._id}">{.name}</option>
+          {/categories}
+        </select><br />
 
-      <label for="price">
-        $ <input type="number" min="0.00" step="0.01" name="price" placeholder="Price" />
-      </label>
+        <label for="price">
+          $ <input type="number" min="0.00" step="0.01" name="price" placeholder="Price" />
+        </label>
 
-      <label for="inStock">
-        <input type="number" name="inStock" placeholder="Quantity available" value="1" />
-      </label>
+        <label for="inStock">
+          <input type="number" name="inStock" placeholder="Quantity available" value="1" />
+        </label>
 
-      <label for="description">
-        <textarea name="description"></textarea>
-      </label>
+        <label for="description">
+          <textarea name="description"></textarea>
+        </label>
 
-      <input type="submit" value="Create"/>
-      <input type="hidden" name="_csrf" value="{_csrf}"/>
-    </form>
-  </div>
+        <input type="submit" value="Create"/>
+        <input type="hidden" name="_csrf" value="{_csrf}"/>
+      </form>
+    </div>
+  </section>
 {/body}
