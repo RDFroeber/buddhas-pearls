@@ -30,9 +30,14 @@ adminRouter.route('/')
     return res.render('admin');
   });
 
-// adminRouter.route('/users')
-//   .get(function(req, res, next) {
-//     return res.render('admin');
-//   });
+adminRouter.route('/users')
+  .get(function(req, res, next) {
+    User.find().exec(function(err, users){
+      if(err){
+        console.log(err);
+      }
+      return res.render('users/index', {user: req.user, users: users});
+    });
+  });
 
 module.exports = adminRouter;

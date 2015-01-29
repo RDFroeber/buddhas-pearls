@@ -1,0 +1,29 @@
+{>"layouts/master" /}
+
+{<body}
+  <section>
+    <h2>User Accounts</h2>
+    
+    {#users}
+      <div class="items">
+        <p>{firstName} {lastName} 
+          {?isAdmin}
+          (admin)</p>
+          {:else}
+          (customer)</p>
+          {/isAdmin}
+        <p>{local.email}</p>
+
+        {?address.street}
+        <p>Address:</p>
+        <p>{address.street}<br />
+        {address.city}, {address.state} {address.zipcode}</p>
+        {/address.street}
+
+        <p><a href="/admin/users/{user.id}">View User</a></p>
+        <p><a href="/account/{user.id}/orders">User's Orders</a></p>
+      </div>
+    {/users}
+  </section>
+{/body}
+
