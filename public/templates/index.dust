@@ -2,10 +2,11 @@
 
 {<body}
   
-  <section class="banner">
-  </section>
+  <header role="banner" class="banner">
+  </header>
 
   <section>
+    <h2>...</h2>
     <p>Buddhas &amp; Pearls is a jewelry boutique dedicated to crafting original and unique pieces.</p>
 
     <form action="/">

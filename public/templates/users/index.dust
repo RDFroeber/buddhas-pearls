@@ -20,8 +20,8 @@
         {address.city}, {address.state} {address.zipcode}</p>
         {/address.street}
 
-        <p><a href="/admin/users/{user.id}">View User</a></p>
-        <p><a href="/account/{user.id}/orders">User's Orders</a></p>
+        <p><a href="#user">View User</a></p>
+        <p><a href="#users#orders">User's Orders</a></p>
       </div>
     {/users}
   </section>

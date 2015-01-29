@@ -1,17 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8"/>
+  <meta name="author" content="Raleigh D Froeber">
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+
   <title>Buddhas &amp; Pearls</title>
   
   <!-- Icons -->
   <!-- <link rel="apple-touch-icon" sizes="144x144" href="img/apple-touch-icon.png"> -->
-  <!-- <link rel="shortcut icon" sizes="48x48" type="image/png" href="img/favicon.ico"> -->
+  <link rel="shortcut icon" sizes="16x16" type="image/png" href="img/favicon.ico">
   
-  <!-- STYLESHEETS -->
-  <!-- <link rel="stylesheet" type="text/css" href="css/normalize.css" /> -->
-  <link href='http://fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,400italic' rel='stylesheet' type='text/css'>
+  <!-- Stylesheets -->
+  <link href="http://fonts.googleapis.com/css?family=Josefin+Sans:300,400,600,400italic" rel="stylesheet" type="text/css">
   <link rel="stylesheet" type="text/css" href="/css/style.css" />
 
   <!-- IE Fix for HTML5 Tags -->
@@ -21,7 +23,7 @@
 </head>
 <body>
 
-<header>
+<header class="nav">
   <div class="logo">
     {?home}
     <h1>Buddhas &amp; Pearls</h1>
@@ -30,7 +32,8 @@
     {/home}
   </div>
 
-  <nav class="main">
+  <!-- Main Navigation -->
+  <nav role="navigation" class="main">
     <ul>
       <li><a href="#new">New</a></li>
       <li><a href="/store">Shop</a></li>
@@ -39,6 +42,7 @@
     </ul>
   </nav> 
 
+  <!-- Secondary Navigation -->
   <nav class="account">
     <ul>
       {#user}
@@ -57,10 +61,12 @@
   </nav> 
 </header> 
 
-<div class="wrapper">
+<!-- Main Content Area -->
+<div role="main" class="wrapper">
   {+body /}
 </div>
 
+<!-- Footer -->
 <footer>
   <p>&copy; 2015 Buddhas &amp; Pearls. All Rights Reserved.</p>
   <nav class="footer">
@@ -72,6 +78,8 @@
     </ul>
   </nav>
 </footer>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
 </body>
 </html>

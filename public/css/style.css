@@ -1,4 +1,13 @@
-@charset 'UTF-8';
+@charset "UTF-8";
+
+/*** Table Of Contents ***
+* 1. Resets, including Border Box Sizing
+* 2. General Elements, including Headings and Links
+* 3. Top Navigation
+* 4. Main Content Section, including Home and About Sections
+* 5. Footer Section
+* 6. Items and Store, including Store Grid Layout
+***/
 
 /*** Color Codes ***
 * Dark Grey   rgb(62,62,62)     #3E3E3E
@@ -6,12 +15,10 @@
 * Light Grey  rgb(235,235,235)  #EBEBEB
 * Beige       rgb(246,244,242)  #F6F4F2
 * Peach       rgb(248,210,197)  #F8D2C5
-* SeaFoam     rgb(191,242,225)  #BFF2E1
 * Teal        rgb(125,208,203)  #7DD0CB
 ***/
 
-
-/* Reset Styling */
+/*** Reset ***/
 html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
   margin: 0px;
   padding: 0px;
@@ -19,7 +26,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
   font-size: 100%;
 }
 
-/* Apply a natural box layout model to all elements */
+/*** Border Box Sizing ***/
 *, *:before, *:after {
   -moz-box-sizing: border-box; 
   -webkit-box-sizing: border-box; 
@@ -34,7 +41,7 @@ ol, ul {
   list-style: none;
 }
 
-/* General Elements */
+/*** General Elements ***/
 html {
   background: #FFF;
   height: 100%;
@@ -43,7 +50,7 @@ html {
 
 body {
   color: #3E3E3E;
-  font-family: 'Josefin Sans', Helvetica, 'Lucida Grande', sans-serif; 
+  font-family: "Josefin Sans", Helvetica, "Lucida Grande", sans-serif; 
   height: 100%;
   margin: 0px;
   min-height: 100%;
@@ -52,7 +59,60 @@ body {
   width: 100%;
 }
 
-header {
+/*** Headings ***/
+h1 {
+  color: #7DD0CB;
+  display: inline-block;
+  font-size: 24px;
+}
+
+h2 {
+  color: #F8D2C5;
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+h3 {
+  color: #F8D2C5;
+  font-size: 18px;
+  margin-bottom: 18px;
+}
+
+p {
+  margin: 10px 0px;
+  line-height: 1.5em;
+}
+
+/*** Links ***/
+a:link,
+a:visited {
+  color: #7DD0CB;
+  text-decoration: none;
+}
+
+a:hover,
+a:active {
+  color: #F8D2C5;
+  -moz-transition: all .3s;
+  -webkit-transition: all .3s;
+  -o-transition: all .3s;
+  -ms-transition: all .3s;
+  transition: all .3s;
+}
+
+button, input[type=submit] {
+  cursor: pointer;
+  background-color: #7DD0CB;
+  border: none;
+  padding: 5px 10px;
+}
+
+button:hover, input[type=submit]:hover {
+  background-color: #F6F4F2;
+}
+
+/*** Top Navigation ***/
+header.nav {
   background-color: #FFF;
   border-top: 5px solid #F8D2C5;
   border-bottom: 1px solid #F6F4F2;
@@ -63,27 +123,6 @@ header {
   z-index: 99999;
 }
 
-div.wrapper {
-  margin-bottom: -100px; 
-  min-height: 100%;
-  position: relative;
-  top: 50px;
-  width: 100%;
-}
-
-div.wrapper:after {
-  content: "";
-  display: block;
-  height: 150px;
-}
-
-div.logo {
-  left: 10px;
-  position: absolute;
-  top: 15px;
-}
-
-/* Navigation */
 nav.main {
   margin: -5px auto 0px;
   position: relative;
@@ -134,39 +173,25 @@ nav.account ul li a {
   text-decoration: none;
 }
 
-/* Headings */
-h1 {
-  color: #7DD0CB;
-  display: inline-block;
-  font-size: 24px;
+div.logo {
+  left: 10px;
+  position: absolute;
+  top: 15px;
 }
 
-h2 {
-  color: #F8D2C5;
-  font-size: 20px;
-  margin-bottom: 20px;
+/*** Main Content Section ***/
+div.wrapper {
+  margin-bottom: -100px; 
+  min-height: 100%;
+  position: relative;
+  top: 50px;
+  width: 100%;
 }
 
-p {
-  margin: 10px 0px;
-  line-height:1.5em;
-}
-
-/* Links */
-a:link,
-a:visited {
-  color: #7DD0CB;
-  text-decoration: none;
-}
-
-a:hover,
-a:active {
-  color: #F8D2C5;
-  -moz-transition: all .3s;
-  -webkit-transition: all .3s;
-  -o-transition: all .3s;
-  -ms-transition: all .3s;
-  transition: all .3s;
+div.wrapper:after {
+  content: "";
+  display: block;
+  height: 150px;
 }
 
 /*** Home Section ***/
@@ -176,10 +201,21 @@ section {
   margin: 0 auto;
 }
 
-section.banner {
-  background: url('../img/boho_style.jpg') no-repeat center top;
+header.banner {
+  background: url("../img/boho_style.jpg") no-repeat center top;
   background-size: cover;
   height: 600px;
+  margin: 0px;
+  padding: 0px;
+  position: relative;
+  width: 100%;
+}
+
+/*** About Section ***/
+.about {
+  background: url("../img/boho_style.jpg") no-repeat left bottom;
+  background-size: cover;
+  height: 400px;
   margin: 0px;
   padding: 0px;
   position: relative;
@@ -220,6 +256,7 @@ footer nav ul li a:active {
   color: #F8D2C5;
 }
 
+/*** Items and Store ***/
 img.productImg {
   display: block;
   max-height: 120px;
@@ -230,29 +267,7 @@ div.order .line-item p {
   width: 100px;
 }
 
-button, input[type=submit] {
-  cursor: pointer;
-  background-color: #7DD0CB;
-  border: none;
-  padding: 5px 10px;
-}
-
-button:hover, input[type=submit]:hover {
-  background-color: #F6F4F2;
-}
-
-.about {
-  background: url('../img/boho_style.jpg') no-repeat left bottom;
-  background-size: cover;
-  height: 400px;
-  margin: 0px;
-  padding: 0px;
-  position: relative;
-  width: 100%;
-}
-
-/*  Item Grid Layout */
-
+/*** Store Grid Layout ***/
 .container {
   width: 100%;
 }

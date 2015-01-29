@@ -7,18 +7,28 @@
     <div>
       <h3>Add Category</h3>
       <form action="/inventory/categories" method="POST">
-        <label for="name">
-          <input type="text" name="name" placeholder="Category name" />
-        </label>
-
-        <select name="type">
-          <option value="Jewelry">Jewelry</option>
-          <option value="Misc">Misc</option>
-        </select>
-
-        <label for="description">
-          <input type="text" name="description" placeholder="Category description" />
-        </label>
+        <table>
+          <tr>
+            <td>
+              <label for="name">
+                <input type="text" name="name" placeholder="Category name" />
+              </label>
+            </td>
+            <td>
+              <select name="type">
+                <option value="Jewelry">Jewelry</option>
+                <option value="Misc">Misc</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <label for="description">
+                <input type="text" name="description" placeholder="Category description" />
+              </label>
+            </td>
+          </tr>
+        </table>
 
         <input type="submit" value="Create"/>
         <input type="hidden" name="_csrf" value="{_csrf}"/>

@@ -5,31 +5,36 @@
     <h2>Inventory</h2>
 
     <div>
-      <h3>All Items</h3>
-      {?items}
-        {#items}
-          <div class="items">
-            <p>
-              <img src="{imageUrl}" alt="Image of {name}" class="productImg">
-              <strong>name</strong>: {name}<br />
-              <strong>sku</strong>: {sku}<br />
-              <strong>price</strong>: ${pricing.total}<br />
-              {?inStock}
-                <strong>available</strong>: {available} item(s)<br />
-              {:else}
-                <strong>none in stock</strong><br />
-              {/inStock}
-              <strong>description</strong>: {description}<br />
-            </p>
-            <p><a href="/inventory/items/{sku}">View Item</a></p>
-            <p><a href="/inventory/edit/{sku}">Edit Item</a></p>
-          </div>
+      <div class="container">
+        <div class="grid-20">
+          <h3>All Items</h3>
+          <p><a href="/inventory/new">Add an Item</a></p></p>
+          <p><a href="/inventory/categories">View Categories</a></p>
+        </div>
+        <div class="grid-80">
+        {?items}
+          {#items}
+            <div class="items">
+              <p>
+                <img src="{imageUrl}" alt="Image of {name}" class="productImg">
+                <strong>name</strong>: {name}<br />
+                <strong>sku</strong>: {sku}<br />
+                <strong>price</strong>: ${pricing.total}<br />
+                {?inStock}
+                  <strong>available</strong>: {available} item(s)<br />
+                {:else}
+                  <strong>none in stock</strong><br />
+                {/inStock}
+                <strong>description</strong>: {description}<br />
+              </p>
+              <p><a href="/inventory/items/{sku}">View Item</a></p>
+              <p><a href="/inventory/edit/{sku}">Edit Item</a></p>
+            </div>
+          {/items}
+        {:else}
+          <p>You have no items for sale. <a href="/inventory/new">Add one!</a></p>
         {/items}
-      {:else}
-        <p>You have no items for sale. <a href="/inventory/new">Add one!</a></p>
-      {/items}
+      </div>
     </div>
-    <p><a href="/inventory/new">Add an Item</a></p></p>
-    <p><a href="/inventory/categories">View Categories</a></p>
   </section>
 {/body}
