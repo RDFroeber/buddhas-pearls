@@ -22,6 +22,7 @@ Buddhas & Pearls is a jewelry boutique dedicated to crafting original and unique
   git clone https://github.com/RDFroeber/buddhas-pearls.git
   cd buddhas-pearls/
   npm install
+  npm install nodemon -g
   npm start
 ```
 
