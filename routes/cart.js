@@ -15,6 +15,8 @@ var express = require('express'),
  **/
 
 cartRouter.use(function(req, res, next) {
+  console.log(req.session.cart)
+  
   res.app.locals.cart = req.session.cart;
   return next();
 });

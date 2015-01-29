@@ -50,6 +50,7 @@ loginRouter.route('/login')
 loginRouter.route('/logout')
   .get(function(req, res, next) {
     req.logout();
+    // TODO: Not erasing cart!
     return res.redirect('/');
   });
 
@@ -168,6 +169,7 @@ loginRouter.route('/unlink/twitter')
 
 function updateCartAndRedirect(req, res){
   if(req.session.cart && req.session.cart.number){
+    // TODO: If user already has cart... merge carts
     Order.update({number: req.session.cart.number}, {user: req.user._id}, function(err, order){
       if(err){
         console.log(err);
