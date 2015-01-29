@@ -22,6 +22,8 @@ var userSchema = new Schema({
   local       : {
     email     : {
       type    : String, 
+      unique  : true,
+      lowercase: true,
       trim    : true
     },
     password: {

@@ -4,7 +4,7 @@
 
 var express = require('express'),
     adminRouter = express.Router(),
-    User = require('../models/User'),
+    User = require('../models').User,
     passport = require('passport');
 
 /**

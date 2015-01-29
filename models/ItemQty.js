@@ -8,17 +8,17 @@ var mongoose = require('mongoose'),
     Item = require('./Item');
 
 var itemQtySchema = new Schema({
-  item      : {
-    type    : Schema.Types.ObjectId, 
-    ref     : 'Item' 
+  item       : {
+    type     : Schema.Types.ObjectId, 
+    ref      : 'Item' 
   },
-  qty       : {
-    type    : Number,
-    required: true
+  qty        : {
+    type     : Number,
+    required : true
   },
-  itemTotal : {
-    type    : Number,
-    // required: true
+  itemTotal  : {
+    type     : Number,
+    // required : true
   }
 });
 

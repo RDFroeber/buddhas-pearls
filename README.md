@@ -1,6 +1,9 @@
 # Buddhas & Pearls
 
-The e-commerce web application for jewelry sales
+[![Dependency Status](https://david-dm.org/RDFroeber/buddhas-pearls.svg)](https://david-dm.org/RDFroeber/buddhas-pearls)
+[![Build Status](https://travis-ci.org/RDFroeber/buddhas-pearls.svg?branch=master)](https://travis-ci.org/RDFroeber/buddhas-pearls)
+
+Buddhas & Pearls is a jewelry boutique dedicated to crafting original and unique pieces.
 
 ## Features
 
@@ -12,6 +15,38 @@ The e-commerce web application for jewelry sales
 
 * Stripe integration
 * Angular implementation
+
+## Installation
+
+```sh
+  git clone https://github.com/RDFroeber/buddhas-pearls.git
+  cd buddhas-pearls/
+  npm install
+  npm start
+```
+
+## OAuth Authentication
+
+In order to login via OAuth client IDs and keys are required. If you would like to login using OAuth, use the following steps:
+
+* Rename `authSample.js` to `auth.js`
+* You can now login using the Facebook API
+* If you would like to login via Google+ or Twitter those credentials must be added
+
+## Item Images
+
+Item images are store in S3. If you would like to upload any images, use the following steps.
+
+* Rename `authSample.js` to `auth.js`
+* Update the accessKeyId and secretAccessKey
+* Create an S3 bucket under your account
+* Replace the imagePath `var imagePath = 'https://divorante.s3-us-west-2.amazonaws.com/'` with your bucket URL
+
+## Tests
+
+```sh
+  npm test
+```
 
 ## Dependencies
 
@@ -27,7 +62,6 @@ The e-commerce web application for jewelry sales
 - [dustjs-linkedin](https://github.com/linkedin/dustjs): Asynchronous templates for the browser and node.js ( LinkedIn fork )
 - [express](https://github.com/strongloop/express): Fast, unopinionated, minimalist web framework
 - [express-session](https://github.com/expressjs/session): Simple session middleware for Express
-- [jade](https://github.com/visionmedia/jade): Jade template engine
 - [lusca](https://github.com/krakenjs/lusca): Application security for express.
 - [mailgun-js](https://github.com/1lobby/mailgun-js): Simple Node.js helper module for Mailgun API
 - [method-override](https://github.com/expressjs/method-override): Override HTTP verbs
@@ -42,7 +76,3 @@ The e-commerce web application for jewelry sales
 - [passport-twitter](https://github.com/jaredhanson/passport-twitter): Twitter authentication strategy for Passport.
 - [serve-favicon](https://github.com/expressjs/serve-favicon): favicon serving middleware with caching
 - [underscore](https://github.com/jashkenas/underscore): JavaScript&#39;s functional programming helper library.
-
-## Dev Dependencies
-
-None
