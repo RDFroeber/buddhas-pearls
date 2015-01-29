@@ -73,7 +73,7 @@ h2 {
 }
 
 h3 {
-  color: #F8D2C5;
+  color: #3E3E3E;
   font-size: 18px;
   margin-bottom: 18px;
 }
@@ -104,11 +104,20 @@ button, input[type=submit] {
   cursor: pointer;
   background-color: #7DD0CB;
   border: none;
+  margin: 10px;
   padding: 5px 10px;
 }
 
 button:hover, input[type=submit]:hover {
   background-color: #F6F4F2;
+}
+
+form table tr td {
+  padding: 2px 0px;
+}
+
+form table input[type=submit] {
+  margin: 0px 10px;
 }
 
 /*** Top Navigation ***/
@@ -186,6 +195,7 @@ div.wrapper {
   position: relative;
   top: 50px;
   width: 100%;
+  z-index: -1;
 }
 
 div.wrapper:after {
@@ -209,6 +219,12 @@ header.banner {
   padding: 0px;
   position: relative;
   width: 100%;
+}
+
+blockquote {
+  border-bottom: 1px solid #F6F4F2;
+  padding: 30px;
+  text-align: center;
 }
 
 /*** About Section ***/
@@ -248,12 +264,33 @@ footer nav ul li a:visited {
   color: #A9A9A9;
   margin: 10px 16px;
   padding: 5px;
-  text-decoration: none;
 }
 
 footer nav ul li a:hover,
 footer nav ul li a:active {
   color: #F8D2C5;
+}
+
+button.contact {
+  cursor: pointer;
+  background-color: #7DD0CB;
+  border: none;
+  font-size: 16px;
+  margin: 10px 0px;
+  padding: 10px 14px;
+}
+
+div.catalog{
+  background: url("../img/boho_style.jpg") no-repeat center bottom;
+  background-size: cover;
+  height: 100px;
+  width: 80px;
+}
+
+input#newsletter {
+  height: 25px;
+  margin: 9px 0px;
+  width: 100%;
 }
 
 /*** Items and Store ***/
@@ -278,6 +315,18 @@ div.order .line-item p {
   vertical-align: top;
 }
 
+.grid-30 {
+  display: inline-block;
+  width: 30%;
+  vertical-align: top;
+}
+
+.grid-50 {
+  display: inline-block;
+  width: 50%;
+  vertical-align: top;
+}
+
 .grid-80 {
   display: inline-block;
   width: 80%;
@@ -292,3 +341,7 @@ div.order .line-item p {
   vertical-align: top;
 }
 
+.grid-20 img.productImg {
+  display: block;
+  max-height: 250px;
+}

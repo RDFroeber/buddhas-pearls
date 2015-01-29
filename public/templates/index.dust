@@ -5,16 +5,45 @@
   <header role="banner" class="banner">
   </header>
 
-  <section>
-    <h2>...</h2>
-    <p>Buddhas &amp; Pearls is a jewelry boutique dedicated to crafting original and unique pieces.</p>
+  <blockquote>Buddhas &amp; Pearls is a jewelry boutique dedicated to crafting original and unique pieces.</blockquote>
 
-    <form action="/">
-      <label for="newsletter">
-        <input type="text" id="newsletter" placeholder="Enter Your Email Address...">
-      </label>
-      <input type="submit" value="Sign Up Now!">
-    </form>
+  <section>
+    <div class="grid-30">
+      <h2>Need Help?</h2>
+      <div class="grid-50">
+        <button class="contact">Contact Us</button>
+      </div>
+      <div class="grid-50">
+        <p>Or Give Us A Call<br />
+        (800) 888-0000</p>
+      </div>
+    </div>
+
+    <div class="grid-30">
+      <h2>January Styles</h2>
+      <div class="grid-30">
+        <div class="catalog"></div>
+      </div>
+      <div class="grid-50">
+        <p>Want to receive our catalog?</p>
+        <button>Order One Now</button>
+      </div>
+    </div>
+
+    <div class="grid-30">
+      <h2>Stay in Touch</h2>
+      <p>Sign Up For Our Emails!</p>
+      <form action="/">
+        <div class="grid-80">
+          <label for="newsletter">
+            <input type="text" id="newsletter" placeholder="Enter Your Email Address...">
+          </label>
+        </div>
+        <div class="grid-20">
+          <input type="submit" value="Sign Up Now!">
+        </div>
+      </form>
+    </div>
   </section>
 
 {/body}

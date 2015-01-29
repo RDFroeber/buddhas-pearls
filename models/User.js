@@ -5,10 +5,7 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
     bcrypt = require('bcrypt'),
-    moment = require('moment'),
-    Promise = require('bluebird');
-
-Promise.promisifyAll(mongoose);
+    moment = require('moment');
 
 var userSchema = new Schema({
   firstName   : {
