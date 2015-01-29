@@ -177,10 +177,16 @@ nav.account ul li {
   display: inline;
 }
 
-nav.account ul li a {
+nav.account ul li a:link,
+nav.account ul li a:visited {
   color: #A9A9A9;
   padding: 5px;
   text-decoration: none;
+}
+
+nav.account ul li a:hover,
+nav.account ul li a:active {
+  color: #7DD0CB;
 }
 
 div.logo {
