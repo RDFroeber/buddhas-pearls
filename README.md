@@ -46,7 +46,7 @@ Item images are store in S3. If you would like to upload any images, use the fol
 
 ## Tests
 
-There are a few test for the User and Order models currently. More tests will be added soon. To run the test suite, use the following command:
+There are currently a few tests for the User and Order models. More tests will be added soon. To run the test suite, use the following command:
 
 ```
 $  npm test
