@@ -1,6 +1,6 @@
 {
   "name": "buddhas",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "author": "Raleigh D. Froeber <RDFroeber@gmail.com> (http://raleighdaniel.com/)",
   "description": "Buddhas & Pearls is a jewelry boutique dedicated to crafting original and unique pieces",
   "keywords": [],
@@ -29,6 +29,7 @@
     "mongoose": "^3.8.19",
     "morgan": "^1.5.1",
     "multer": "^0.1.6",
+    "nodemon": "^1.3.5",
     "passport": "^0.2.1",
     "passport-facebook": "^1.0.3",
     "passport-google-oauth": "^0.1.5",
