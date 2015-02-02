@@ -9,16 +9,16 @@
     {/sale}
 
     <div class="container">
-      <div class="grid-20">
-        <h3>All Items</h3>
+      <div class="grid-20" id="filters">
+        <h3><a href="#" data-filter="*">All Items</a></h3>
         {#categories}
-        <p><a href="#">{.name}</a></p>
+        <p><a href="#{.name}" data-filter=".{.name}">{.name}</a></p>
         {/categories}
       </div>
-      <div class="grid-80">
+      <div class="grid-80 isotope">
       {?items}
         {#items}
-          <div class="items">
+          <div class="items element-item {category.name}">
             <a href="/store/items/{sku}"><img src="{imageUrl}" alt="Image of {name}" class="productImg"></a>
             <p><strong>{name}</strong> {sku}</p>
             <p><strong>price</strong>: ${pricing.total}  
