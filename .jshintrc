@@ -1,0 +1,20 @@
+{
+  "node": true,
+  "bitwise": false,     // allow bitwise operants
+  "camelcase": true,    // enforce camel casing
+  "curly": true,        // conditional statements must use {}
+  "eqeqeq": true,       // prohibits == and != operants 
+  "freeze": true,       // prohibit overwriting native object prototypes
+  "immed": true,        // prohibits calling functions without ()
+  "indent": 2,          // enforces specific tab width
+  "latedef": true,      // forces all variables to be explicitly declared
+  "newcap": true,       // forces capitalization of variables following the new keyword
+  "nonew": true,        // requires a variable be assigned when using the new keyword
+  "quotmark": "single", // enforces 'single' quotes
+  "undef": true,        // all variables must be explicitly declared
+  "unused": false,       // warning issued for unused variables
+  "strict": true,       // enforces  all functions to run in ECMAScript 5s strict mode
+  "trailing": true,     // prohibits trailing whitespace characters
+  "browser": true,      // allows use of global native browser objects
+  "predef": [ "module", "require", "jQuery", "$" ] // Global variables
+}
