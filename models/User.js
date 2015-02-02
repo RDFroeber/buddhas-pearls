@@ -75,13 +75,17 @@ var userSchema = new Schema({
       type    : Number
     }
   },
+  cart        : {
+    type      : Schema.Types.ObjectId, 
+    ref       : 'Order' 
+  },
   createdAt   : { 
     type      : Date, 
-    default   : Date.now 
+    default   : Date.now()
   },
   updatedAt   :  { 
     type      : Date, 
-    default   : Date.now 
+    default   : Date.now()
   }
 });
 

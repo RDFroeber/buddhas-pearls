@@ -26,7 +26,7 @@ var orderSchema = new Schema({
   }],
   status      : {
     type      : String, 
-    enum      : ['Cart', 'Pending', 'Approved', 'Complete', 'Canceled']
+    enum      : ['Cart', 'Pending', 'Approved', 'Complete', 'Canceled', 'Merged']
   },
   totalPrice  : {
     type      : Number,
@@ -38,11 +38,11 @@ var orderSchema = new Schema({
   },
   createdAt   : { 
     type      : Date, 
-    default   : Date.now 
+    default   : Date.now()
   },
   updatedAt   :  { 
     type      : Date, 
-    default   : Date.now 
+    default   : Date.now()
   }
 });
 
