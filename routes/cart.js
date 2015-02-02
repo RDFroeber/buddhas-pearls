@@ -15,8 +15,6 @@ var express = require('express'),
  **/
 
 cartRouter.use(function(req, res, next) {
-  console.log(req.session.cart)
-  
   res.app.locals.cart = req.session.cart;
   return next();
 });
@@ -110,46 +108,58 @@ module.exports = cartRouter;
  **/
 
 function createOrderWithItem(userId, itemQtyObj, callback){
-  // create itemqty
-  itemQtyObj.saveAsync()
-  .spread(function(savedItemQty, numAffected) {
-    console.log(savedItemQty)
-    return savedItemQty;
-  })
-  .then(function(ItemQty){
-    var order = new Order({user: userId, status: 'Cart', itemList: [ItemQty]});
-    // create order
-    order.saveAsync()
-    .spread(function(savedOrder, numAffected) {
-      callback(savedOrder);
-    })
-    .catch(function(err) {
-      console.log(err);
-    });
-  }).catch(function(err) {
-    console.log(err);
+  async.waterfall([
+    function(next){
+      // create itemqty
+      itemQtyObj.save(function(err, savedQty){
+        if(err){
+          console.log(err);
+        } else {
+          next(null, savedQty);
+        }
+      });
+    },
+    function(ItemQty, next){
+      var order = new Order({user: userId, status: 'Cart', itemList: [ItemQty]});
+      // create order
+      order.save(function(err, savedOrder){
+       if(err){
+          console.log(err);
+        } else {
+          next(null, savedOrder);
+        }
+      });
+    },
+  ], function (err, savedOrder) {
+     callback(savedOrder);
   });
 }
 
 function addItemToOrder(order, itemQtyObj, callback){
-  // create itemqty
-  itemQtyObj.saveAsync()
-  .spread(function(savedItemQty, numAffected) {
-    console.log(savedItemQty)
-    return savedItemQty;
-  })
-  .then(function(ItemQty){
-    order.itemList.push(ItemQty);
-    // create order
-    order.saveAsync()
-    .spread(function(savedOrder, numAffected) {
-      callback(savedOrder);
-    })
-    .catch(function(err) {
-      console.log(err);
-    });
-  }).catch(function(err) {
-    console.log(err);
+  async.waterfall([
+    function(next){
+      // create itemqty
+      itemQtyObj.save(function(err, savedQty){
+        if(err){
+          console.log(err);
+        } else {
+          next(null, savedQty);
+        }
+      });
+    },
+    function(ItemQty, next){
+      order.itemList.push(ItemQty);
+      // update order
+      order.save(function(err, savedOrder){
+       if(err){
+          console.log(err);
+        } else {
+          next(null, savedOrder);
+        }
+      });
+    },
+  ], function (err, savedOrder) {
+     callback(savedOrder);
   });
 }
 
