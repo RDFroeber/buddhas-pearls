@@ -35,7 +35,7 @@
   <!-- Main Navigation -->
   <nav role="navigation" class="main">
     <ul>
-      <li><a href="#new">New</a></li>
+      <li><a href="/store/new">New</a></li>
       <li><a href="/store">Shop</a></li>
       <li><a href="/store/sale">Sale</a></li>
       <li><a href="/about">About</a></li>

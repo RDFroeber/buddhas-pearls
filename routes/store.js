@@ -3,6 +3,7 @@
  **/
 
 var express = require('express'),
+    moment = require('moment'),
     storeRouter = express.Router(),
     Item = require('../models').Item,
     Category = require('../models').Category;
@@ -10,6 +11,23 @@ var express = require('express'),
 storeRouter.route('/')
   .get(function(req, res, next) {
     Item.find().exec(function(err, items){
+      if(err){
+        console.log(err);
+      }
+      Category.find().exec(function(err, categories){
+        if(err){
+          console.log(err);
+        }
+        return res.render('items/store', {user: req.user, items: items, categories: categories});
+      });
+    });
+  });
+
+storeRouter.route('/new')
+  .get(function(req, res, next) {
+    var twoWeeksAgo = moment().subtract('weeks', 2).valueOf();
+
+    Item.find({createdAt: {$lte: twoWeeksAgo}}).exec(function(err, items){
       if(err){
         console.log(err);
       }
