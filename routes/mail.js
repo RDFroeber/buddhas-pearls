@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Mail Router
  **/
@@ -14,23 +16,23 @@ var express = require('express'),
  **/
 
 mailRouter.route('/submit/:toEmail')
-  .get(function(req, res, next) {
+  .get(function(req, res) {
     var data = {
       from: fromEmail,
       to: req.params.toEmail, 
       subject: 'Hello from Mailgun',
-      html: 'Hello, This is not a plain-text email, I wanted to test some spicy Mailgun sauce in NodeJS! <a href="http://0.0.0.0:3030/validate?' + req.params.toEmail + '">Click here to add your email address to a mailing list</a>'
+      html: "Hello, This is not a plain-text email, I wanted to test some spicy Mailgun sauce in NodeJS! <a href='http://0.0.0.0:3030/validate?' + req.params.toEmail>Click here to add your email address to a mailing list</a>"
     }
 
     //Invokes the method to send emails given the above data with the helper library
     mailgun.messages().send(data, function (err, body) {
       if(err) {
-        console.log("got an error: ", err);
+        console.log('got an error: ', err);
         return res.render('errors/' + err.status, { error : err});
       } else {
         console.log(body);
-        //Here "submitted.jade" is the view file for this landing page 
-        //We pass the variable "email" from the url parameter in an object rendered by Jade
+        //Here 'submitted.jade' is the view file for this landing page 
+        //We pass the variable 'email' from the url parameter in an object rendered by Jade
         return res.render('submitted', {email : req.params.toEmail, title: 'Email Sent'});
       }
     });
@@ -41,7 +43,7 @@ mailRouter.route('/submit/:toEmail')
  **/
 
 mailRouter.route('/validate/:toEmail')
-  .get(function(req, res, next) {
+  .get(function(req, res) {
     var members = [{
       address: req.params.toEmail
     }];
@@ -49,11 +51,11 @@ mailRouter.route('/validate/:toEmail')
     mailgun.lists('NAME@MAILINGLIST.COM').members().add({ members: members, subscribed: true }, function (err, body) {
       if(err) {
         console.log(err);
-        return res.send("Error - check console");
+        return res.send('Error - check console');
       }
       else {
         console.log(body);
-        return res.send("Added to mailing list");
+        return res.send('Added to mailing list');
       }
     });
   });
@@ -63,10 +65,10 @@ mailRouter.route('/validate/:toEmail')
  **/
 
 mailRouter.route('/invoice/:toEmail')
-  .get(function(req, res, next) {
+  .get(function(req, res) {
     //Which file to send? I made an empty invoice.txt file in the root directory
     //We required the path module here..to find the full path to attach the file!
-    var path = require("path");
+    var path = require('path');
     var fp = path.join(__dirname, '../invoice.txt');
     //Settings
 
@@ -84,8 +86,8 @@ mailRouter.route('/invoice/:toEmail')
         console.log(err);
         return res.render('errors/' + err.status, {title: 'Whoops!', error: error});
       } else {
-        return res.send("Attachment is on its way");
-        console.log("attachment sent", fp);
+        return res.send('Attachment is on its way');
+        console.log('attachment sent', fp);
       }
     });
   });

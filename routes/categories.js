@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Category Router
  **/
@@ -7,7 +9,7 @@ var express = require('express'),
     Category = require('../models').Category;
 
 categoryRouter.route('/categories')
-  .get(function(req, res, next) {
+  .get(function(req, res) {
     Category.find().populate('parent').exec(function(err, categories){
       if(err){
         console.log(err);
@@ -15,7 +17,7 @@ categoryRouter.route('/categories')
       return res.render('categories/index', {user: req.user, categories: categories});
     });
   })
-  .post(function(req, res, next) {
+  .post(function(req, res) {
     var categoryObj = req.body;
     if(categoryObj.parent === 'null'){
       delete categoryObj.parent;
@@ -31,17 +33,17 @@ categoryRouter.route('/categories')
   });
 
 categoryRouter.route('/categories/new')
-  .get(function(req, res, next) {
+  .get(function(req, res) {
     Category.find().exec(function(err, categories){
       if(err){
         console.log(err);
       }
       return res.render('categories/new', {user: req.user, categories: categories});
     });
-  })
+  });
 
 // categoryRouter.route('/categories/:name')
-//   .get(function(req, res, next) {
+//   .get(function(req, res) {
 //     var name = req.param('name');
 
 //     Category.findOne({name: name}).exec(function(err, category){

@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Order Model
  **/
@@ -5,7 +7,8 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
     moment = require('moment'),
-    async = require('async');
+    async = require('async'),
+    ItemQty = require('./ItemQty');
 
 var orderSchema = new Schema({
   number      : {
@@ -64,9 +67,10 @@ orderSchema.set('toObject', { virtuals: true });
 function generateOrderNum() {
   var time = new Date().getTime();
 
-  while(time === new Date().getTime());
-  return new Date().getTime();
-};
+  while(time === new Date().getTime()){
+    return new Date().getTime();
+  }
+}
 
 function calculateTotal(self, next) {
   var order = self,
@@ -92,7 +96,7 @@ function calculateTotal(self, next) {
       return next();
     }
   });
-};
+}
 
 /**
 * Pre-Save

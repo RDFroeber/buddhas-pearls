@@ -1,10 +1,11 @@
+'use strict';
+
 /**
  * ItemQty Model
  **/
 
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema,
-    moment = require('moment'),
     Item = require('./Item');
 
 var itemQtySchema = new Schema({

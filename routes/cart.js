@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Cart Router
  **/
@@ -5,13 +7,13 @@
 var express = require('express'),
     cartRouter = express.Router(),
     async = require('async'),
-    _ = require('underscore');
+    _ = require('underscore'),
     Order = require('../models').Order,
     Item = require('../models').Item,
     ItemQty = require('../models').ItemQty;
 
 cartRouter.route('/')
-  .get(function(req, res, next) {
+  .get(function(req, res) {
     var orderNumber = req.session.cart && req.session.cart.number,
         itemQties = [];
 
@@ -42,7 +44,7 @@ cartRouter.route('/')
       }
     });
   })
-  .put(function(req, res, next) {
+  .put(function(req, res) {
     var userId = req.user && req.user._id,
         orderNumber = req.session.cart && req.session.cart.number,
         itemId = req.param('item'),

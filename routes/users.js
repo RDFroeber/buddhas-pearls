@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * User Router
  **/
@@ -20,21 +22,21 @@ userRouter.use(function(req, res, next) {
 });
 
 userRouter.route('/settings')
-  .get(function(req, res, next) {
+  .get(function(req, res) {
     return res.render('users/settings', req.user);
   });
 
 userRouter.route('/edit')
-  .get(function(req, res, next) {
+  .get(function(req, res) {
     var statesArray = ['AL', 'AK', 'AZ', 'AR', 'CA', 'CO', 'CT', 'DE', 'DC', 'FL', 'GA', 'HI', 'ID', 'IL', 'IN', 'IA', 'KS', 'KY', 'LA', 'ME', 'MD', 'MA', 'MI', 'MN', 'MS', 'MO', 'MT', 'NE', 'NV', 'NH', 'NJ', 'NM', 'NY', 'NC', 'ND', 'OH', 'OK', 'OR', 'PA', 'RI', 'SC', 'SD', 'TN', 'TX', 'UT', 'VT', 'VA', 'WA', 'WV', 'WI', 'WY'];
     return res.render('users/edit', {user: req.user, states: statesArray});
   });
 
 userRouter.route('/')
-  .get(function(req, res, next) {
+  .get(function(req, res) {
     return res.render('users/dashboard', req.user);
   })
-  // .post(function(req, res, next) {
+  // .post(function(req, res) {
   //   var userObj = req.body;
   //   userObj.updatedAt = Date.now();
 
@@ -43,7 +45,7 @@ userRouter.route('/')
   //     return res.redirect('/account');
   //   });
   // })
-  .put(function(req, res, next) {
+  .put(function(req, res) {
     var userObj = req.body;
     userObj.updatedAt = Date.now();
 
@@ -52,7 +54,7 @@ userRouter.route('/')
       return res.redirect('/account/settings');
     });
   })
-  .delete(function(req, res, next) {
+  .delete(function(req, res) {
     req.user.remove(function(err) {
       return res.json({});
     });

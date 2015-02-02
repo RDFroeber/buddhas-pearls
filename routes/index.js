@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Home Router
  **/
@@ -16,12 +18,12 @@ homeRouter.use(function(req, res, next) {
 });
 
 homeRouter.route('/')
-  .get(function(req, res, next) {
+  .get(function(req, res) {
     return res.render('index', {home: true, greeting: 'Welcome to My Site!'});
   });
  
 homeRouter.route('/about')
-  .get(function(req, res, next) {
+  .get(function(req, res) {
     return res.render('about', {});
   });
 

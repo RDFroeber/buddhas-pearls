@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Order Router
  **/
@@ -22,7 +24,7 @@ orderRouter.use(function(req, res, next) {
 });
 
 orderRouter.route('/')
-  .get(function(req, res, next) {
+  .get(function(req, res) {
     Order.find({user: req.user._id}, {_id: 0}).populate('itemList').exec(function(err, orders){
       if(err){
         console.log(err);
@@ -33,7 +35,7 @@ orderRouter.route('/')
   });
 
 orderRouter.route('/:orderNum')
-  .get(function(req, res, next) {
+  .get(function(req, res) {
     var orderNumber = req.param('orderNum'),
         itemQties = [];
 
@@ -51,7 +53,7 @@ orderRouter.route('/:orderNum')
             } else {
               itemQtyObj.item = item;
               itemQties.push(itemQtyObj);
-              callback(err, item)
+              callback(err, item);
             }
           });
         }, function(err, item){

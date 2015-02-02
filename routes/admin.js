@@ -1,11 +1,12 @@
+'use strict';
+
 /**
  * Admin Router
  **/
 
 var express = require('express'),
     adminRouter = express.Router(),
-    User = require('../models').User,
-    passport = require('passport');
+    User = require('../models').User;
 
 /**
  * Admin Router Middleware 
@@ -26,12 +27,12 @@ adminRouter.use(function(req, res, next) {
  **/
 
 adminRouter.route('/')
-  .get(function(req, res, next) {
+  .get(function(req, res) {
     return res.render('admin');
   });
 
 adminRouter.route('/users')
-  .get(function(req, res, next) {
+  .get(function(req, res) {
     User.find().exec(function(err, users){
       if(err){
         console.log(err);

@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Store Router
  **/
@@ -9,8 +11,8 @@ var express = require('express'),
     Category = require('../models').Category;
 
 storeRouter.route('/')
-  .get(function(req, res, next) {
-    Item.find().exec(function(err, items){
+  .get(function(req, res) {
+    Item.find().populate('category').exec(function(err, items){
       if(err){
         console.log(err);
       }
@@ -24,10 +26,10 @@ storeRouter.route('/')
   });
 
 storeRouter.route('/new')
-  .get(function(req, res, next) {
+  .get(function(req, res) {
     var twoWeeksAgo = moment().subtract('weeks', 2).valueOf();
 
-    Item.find({createdAt: {$lte: twoWeeksAgo}}).exec(function(err, items){
+    Item.find({createdAt: {$gte: twoWeeksAgo}}).populate('category').exec(function(err, items){
       if(err){
         console.log(err);
       }
@@ -41,8 +43,8 @@ storeRouter.route('/new')
   });
 
 storeRouter.route('/sale')
-  .get(function(req, res, next) {
-    Item.find({'pricing.onSale': true}).exec(function(err, items){
+  .get(function(req, res) {
+    Item.find({'pricing.onSale': true}).populate('category').exec(function(err, items){
       if(err){
         console.log(err);
       }
@@ -56,7 +58,7 @@ storeRouter.route('/sale')
   });
 
 storeRouter.route('/items/:itemSku')
-  .get(function(req, res, next) {
+  .get(function(req, res) {
     var sku = req.param('itemSku');
 
     Item.findOne({sku: sku}).exec(function(err, item){

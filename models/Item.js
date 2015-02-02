@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Item Model
  **/
@@ -140,7 +142,7 @@ function generateSku(category) {
 
   return sku;
     
-};
+}
 
 /**
 * Pre-Save

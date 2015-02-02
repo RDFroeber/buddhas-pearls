@@ -1,3 +1,5 @@
+'use strict';
+
 /**
  * Item Inventory Router
  **/
@@ -26,7 +28,7 @@ itemRouter.use(function(req, res, next) {
 });
 
 itemRouter.route('/')
-  .get(function(req, res, next) {
+  .get(function(req, res) {
     Item.find().exec(function(err, items){
       if(err){
         console.log(err);
@@ -34,7 +36,7 @@ itemRouter.route('/')
       return res.render('items/index', {user: req.user, items: items});
     });
   })
-  .post(function(req, res, next) {
+  .post(function(req, res) {
     var itemObj = req.body,
         imageObj = req.files.image;
 
@@ -59,7 +61,7 @@ itemRouter.route('/')
   });
 
 itemRouter.route('/new')
-  .get(function(req, res, next) {
+  .get(function(req, res) {
     Category.find().exec(function(err, categories){
       if(err){
         console.log(err);
@@ -70,7 +72,7 @@ itemRouter.route('/new')
 
 
 itemRouter.route('/edit/:itemSku')
-  .get(function(req, res, next) {
+  .get(function(req, res) {
     var sku = req.param('itemSku');
 
     Category.find().exec(function(err, categories){
@@ -87,7 +89,7 @@ itemRouter.route('/edit/:itemSku')
   });
 
 itemRouter.route('/items/:itemSku')
-  .get(function(req, res, next) {
+  .get(function(req, res) {
     var sku = req.param('itemSku');
 
     Item.findOne({sku: sku}).exec(function(err, item){
@@ -97,7 +99,7 @@ itemRouter.route('/items/:itemSku')
       return res.render('items/view', {user: req.user, item: item});
     });
   })
-  .put(function(req, res, next) {
+  .put(function(req, res) {
     var sku = req.param('itemSku'),
         itemObj = req.body,
         imageObj = req.files.image;
@@ -136,7 +138,7 @@ itemRouter.route('/items/:itemSku')
       }
     });
   })
-  .delete(function(req, res, next) {
+  .delete(function(req, res) {
     var sku = req.param('itemSku');
 
     Item.findOne({sku: sku}).remove(function(err) {

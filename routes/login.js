@@ -1,10 +1,13 @@
+'use strict';
+
 /**
  * Login Router
  **/
 
 var express = require('express'),
     loginRouter = express.Router(),
-    User = require('../models/User'),
+    User = require('../models').User,
+    Order = require('../models').Order,
     passport = require('passport');
 
 /**
@@ -12,7 +15,7 @@ var express = require('express'),
  **/
 
 loginRouter.route('/signup')
-  .get(function(req, res, next) {
+  .get(function(req, res) {
     return res.render('signup', {message: req.flash('error')[0]});
   })
   .post(passport.authenticate('localSignup', {
@@ -27,7 +30,7 @@ loginRouter.route('/signup')
   });
 
 loginRouter.route('/login')
-  .get(function(req, res, next) {
+  .get(function(req, res) {
     return res.render('login', {message: req.flash('error')[0]});
   })
   .post(passport.authenticate('localLogin', {
@@ -38,7 +41,7 @@ loginRouter.route('/login')
   });
 
 loginRouter.route('/logout')
-  .get(function(req, res, next) {
+  .get(function(req, res) {
     req.logout();
     // TODO: Not erasing cart!
     return res.redirect('/');
