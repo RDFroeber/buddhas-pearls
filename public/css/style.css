@@ -343,8 +343,8 @@ div.order .line-item p {
 .items {
   display: inline-block;
   margin: 20px;
+  min-height: 250px;
   min-width: 250px;
-  /*width: 300px;*/
   vertical-align: top;
 }
 
