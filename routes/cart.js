@@ -10,15 +10,6 @@ var express = require('express'),
     Item = require('../models').Item,
     ItemQty = require('../models').ItemQty;
 
-/**
- * Cart Router Middleware 
- **/
-
-cartRouter.use(function(req, res, next) {
-  res.app.locals.cart = req.session.cart;
-  return next();
-});
-
 cartRouter.route('/')
   .get(function(req, res, next) {
     var orderNumber = req.session.cart && req.session.cart.number,

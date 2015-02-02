@@ -12,6 +12,10 @@ var express = require('express'),
 
 var s3 = new AWS.S3({accessKeyId: auth.accessKeyId, secretAccessKey: auth.secretAccessKey});
 
+/**
+ * Item Router Middleware 
+ **/
+
 itemRouter.use(function(req, res, next) {
   if(req.user && req.user.isAdmin){
     return next();

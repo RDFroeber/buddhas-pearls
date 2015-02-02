@@ -14,7 +14,6 @@ var express = require('express'),
  **/
 
 orderRouter.use(function(req, res, next) {
-  res.app.locals.cart = req.session.cart;
   if(req.user){
     return next();
   } else {

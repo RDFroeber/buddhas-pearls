@@ -8,16 +8,6 @@ var express = require('express'),
     passport = require('passport');
 
 /**
- * Login Router Middleware 
- **/
-
-loginRouter.use(function(req, res, next) {
-  res.app.locals.user = req.user;
-  // console.log("Trying to: " + req.method, req.url);
-  return next();
-});
-
-/**
  * Local Authentication
  **/
 

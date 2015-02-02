@@ -6,15 +6,18 @@ var express = require('express'),
     userRouter = express.Router(),
     User = require('../models').User;
 
+/**
+ * User Router Middleware 
+ **/
+
 userRouter.use(function(req, res, next) {
   if(req.user){
-    // only their account || isAdmin
+    // TODO: only their account || isAdmin
     return next();
   } else {
     return res.redirect('/login');
   }
 });
-
 
 userRouter.route('/settings')
   .get(function(req, res, next) {
