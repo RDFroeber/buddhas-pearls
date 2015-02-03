@@ -23,6 +23,7 @@ $  git clone https://github.com/RDFroeber/buddhas-pearls.git
 $  cd buddhas-pearls/
 $  npm install
 $  npm install nodemon -g
+$  mv config/authSample.js config/auth.js
 $  npm start
 ```
 
