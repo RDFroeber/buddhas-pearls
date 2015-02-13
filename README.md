@@ -32,8 +32,8 @@ $  npm start
 In order to login via OAuth client IDs and keys are required. If you would like to login using OAuth, use the following steps:
 
 * Rename `authSample.js` to `auth.js`
-* You can now login using the Facebook API
-* If you would like to login via Google+ or Twitter those credentials must be added
+* Add third party API keys
+* You can now login login via Facebook, Google+ or Twitter
 
 ## Item Images
 
