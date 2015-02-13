@@ -8,7 +8,9 @@ var express = require('express'),
     loginRouter = express.Router(),
     User = require('../models').User,
     Order = require('../models').Order,
-    passport = require('passport');
+    passport = require('passport'),
+    async = require('async'),
+    _ = require('underscore');
 
 /**
  * Local Authentication
@@ -162,18 +164,110 @@ loginRouter.route('/unlink/twitter')
 
 function updateCartAndRedirect(req, res){
   if(req.session.cart && req.session.cart.number){
-    // TODO: If user already has cart... merge carts
-    Order.update({number: req.session.cart.number}, {user: req.user._id}, function(err, order){
+    var cart = req.session.cart.number;
+  }
+  if(req.user && req.user.cart){
+    var userCartNum = req.user.cart;
+  }
+
+  if(cart && userCartNum){
+    async.waterfall([
+      function(next){
+        Order.findOne({number: cart}).populate(['itemList', 'itemList.item']).exec(function(err, sessionCart) {
+          if(err){
+            console.log(err);
+          }
+          next(null, sessionCart);
+        });
+      },
+      function(sessionCart, next){
+        Order.findById(req.user.cart).populate(['itemList', 'itemList.item']).exec(function(err, userCart) {
+          if(err){
+            console.log(err);
+          }
+          next(null, sessionCart, userCart)
+        });
+      }
+    ], function (err, sessionCart, userCart) {
+      console.log('sessionCart', sessionCart)
+      console.log('userCart', userCart)
+
+      mergeCarts(sessionCart, userCart, function(){
+        if(req.user.isAdmin){
+          return res.redirect('/admin');
+        } else {
+          return res.redirect('/account');
+        } 
+      });
+    });
+
+  } else if(cart && !userCartNum){
+    User.update({_id: req.user._id}, {cart: req.session.cart._id},function(err, user){
       if(err){
         console.log(err);
       }
+      if(req.user.isAdmin){
+        return res.redirect('/admin');
+      } else {
+        return res.redirect('/account');
+      } 
     });
-  }
-  if(req.user.isAdmin){
-    return res.redirect('/admin');
   } else {
-    return res.redirect('/account');
-  } 
+    if(req.user.isAdmin){
+      return res.redirect('/admin');
+    } else {
+      return res.redirect('/account');
+    } 
+  }
+}
+
+function mergeCarts(sessionCart, userCart, callback){
+  var itemExists = false,
+        itemQty,
+        userItemQty;
+
+  _.each(sessionCart.itemList, function(sessItemQty){
+    itemQty = sessItemQty;
+
+    _.each(userCart.itemList, function(usItemQty){
+      userItemQty = usItemQty;
+
+      if(itemQty.item === userItemQty.item){
+        itemExists = true;
+      }
+
+      if(itemExists){
+        // Update item quantity
+        console.log('updating qty')
+        console.log(userItemQty)
+        var newQty = Number(userItemQty.qty) + Number(itemQty.qty);
+        userItemQty.qty = newQty;
+        console.log(userItemQty)
+
+        userItemQty.save(function (err, updatedItemQty){
+          if(err){
+            console.log(err);
+          } else {
+            console.log('new qty', updatedItemQty)
+            callback(err, updatedItemQty);
+          }
+        });
+        // TODO: Change cart status
+      } else {
+        console.log('need to add')
+        // push itemQty into userCart
+        userCart.itemList.push(itemQty);
+        userCart.save(function(err, updatedOrder){
+          if(err){
+            console.log(err);
+          } else {
+            console.log('updatedOrder', updatedOrder)
+            callback(err, updatedOrder);
+          }
+        });
+      }
+    });
+  });
 }
 
 module.exports = loginRouter;
