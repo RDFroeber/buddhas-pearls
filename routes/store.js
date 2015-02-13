@@ -59,7 +59,7 @@ storeRouter.route('/sale')
 
 storeRouter.route('/items/:itemSku')
   .get(function(req, res) {
-    var sku = req.param('itemSku');
+    var sku = req.params.itemSku;
 
     Item.findOne({sku: sku}).exec(function(err, item){
       if(err){

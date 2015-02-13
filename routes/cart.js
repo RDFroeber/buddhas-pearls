@@ -14,14 +14,21 @@ var express = require('express'),
 
 cartRouter.route('/')
   .get(function(req, res) {
-    var orderNumber = req.session.cart && req.session.cart.number,
+    var orderId,
         itemQties = [];
 
-    Order.findOne({number: orderNumber}, {_id: 0}).populate('itemList').exec(function(err, order){
+    if(req.session.cart && req.session.cart.number){
+      orderId = req.session.cart._id;
+    } else if(req.user && req.user.cart){
+      orderId = req.user.cart;
+    }
+
+    Order.findById(orderId, {_id: 0}).populate('itemList').exec(function(err, order){
       if(err){
         console.log(err);
       } else if(order){
         var orderObj = order.toObject();
+
         async.each(order.itemList, function(itemQty, callback) {
           var itemQtyObj = itemQty.toObject();
 
@@ -46,10 +53,16 @@ cartRouter.route('/')
   })
   .put(function(req, res) {
     var userId = req.user && req.user._id,
-        orderNumber = req.session.cart && req.session.cart.number,
-        itemId = req.param('item'),
+        orderNumber,
+        itemId = req.params.item,
         itemQtyObj = new ItemQty(req.body);
 
+    if(req.user && req.user.cart){
+      orderNumber = req.user.cart;
+    } else if(req.session.cart && req.session.cart.number){
+      orderNumber = req.session.cart.number;
+    }
+    // TODO: Fix logic!
     if(orderNumber){
       Order.findOne({number: orderNumber}).populate(['itemList', 'itemList.item']).exec(function(err, order) {
         if(err){
@@ -122,7 +135,7 @@ function createOrderWithItem(userId, itemQtyObj, callback){
           next(null, savedOrder);
         }
       });
-    },
+    }
   ], function (err, savedOrder) {
      callback(savedOrder);
   });
@@ -162,7 +175,7 @@ function populateItems(itemId, order, itemQtyObj, callback){
 
     if(existingId.toString() === itemId.toString()){
       // Update that item's quantity
-      var newQty = new Number(oneItemQty.qty) + new Number(itemQtyObj.qty);
+      var newQty = Number(oneItemQty.qty) + Number(itemQtyObj.qty);
       ItemQty.findById(oneItemQty._id).exec(function(err, itemQty){
         if(err){
           console.log(err);

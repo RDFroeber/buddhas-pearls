@@ -104,6 +104,8 @@ itemRouter.route('/items/:itemSku')
         itemObj = req.body,
         imageObj = req.files.image;
 
+    itemObj.updatedAt = Date.now();
+
     for (var i in itemObj) {
       if (itemObj[i] === undefined) {
         delete itemObj[i];
